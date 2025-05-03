@@ -3,8 +3,8 @@ package com.vibeverse.server.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.UuidGenerator; // Import the new annotation
 import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
@@ -21,8 +21,7 @@ import java.util.UUID;
 public class Media {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @UuidGenerator // Replaced @GeneratedValue and @GenericGenerator
     @Column(name = "media_id", updatable = false, nullable = false)
     private UUID mediaId;
 
@@ -35,8 +34,12 @@ public class Media {
     @Column(name = "image_url")
     private String imageUrl;
 
+    // The use of TEXT[] for tags is database-specific and not a deprecated Hibernate/JPA feature,
+    // but consider if a more structured approach like a separate entity or a JSONB array
+    // (using @JdbcTypeCode(SqlTypes.JSON) as for specificData) would be more suitable
+    // depending on your querying and data structure needs.
     @Column(name = "tags", columnDefinition = "TEXT[]")
-    private String tags; // Array of tags
+    private String tags; // Array of tags (stored as TEXT[])
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "specific_data", columnDefinition = "jsonb")
