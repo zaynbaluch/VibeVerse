@@ -1,68 +1,66 @@
 package com.vibeverse.server.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*; // Keep all validation imports
+import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList; // Import ArrayList
-import java.util.List; // Import List
-import java.util.Set; // Consider Set for relationships where order doesn't matter and uniqueness within the collection is key
-import java.util.HashSet; // Import HashSet
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
-@Table(name = "vibers") // Explicitly define table name, good practice
-@Getter // Use explicit Getter
-@Setter // Use explicit Setter
+@Table(name = "vibers")
+@Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor // Use explicit AllArgsConstructor
-@Builder // Use explicit Builder
-@EqualsAndHashCode(onlyExplicitlyIncluded = true) // Use ID for equals/hashCode
-@ToString(exclude = {"password", "viberMedia", "vibeBoards", "viberBadges", "sentRequests", "receivedRequests"}) // Exclude sensitive fields and lazy collections
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(exclude = {"password", "viberMedia", "vibeBoards", "viberBadges", "sentRequests", "receivedRequests"})
 public class Viber {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Using Long with IDENTITY
-    @Column(name = "id", updatable = false, nullable = false) // Explicit column definition
-    @EqualsAndHashCode.Include // Include ID in equals/hashCode
-    private Long id; // Primary key type is Long
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
+    @EqualsAndHashCode.Include
+    private Long id;
 
     @NotBlank(message = "Username is required")
     @Size(min = 3, max = 20, message = "Username must be between 3 and 20 characters")
-    @Column(nullable = false, unique = true, length = 20) // Explicit length matching Size
+    @Column(nullable = false, unique = true, length = 20)
     private String username;
 
     @NotBlank(message = "First name is required")
-    @Size(max = 100) // Add max size constraint
-    @Column(name = "first_name", nullable = false, length = 100) // Explicit length
+    @Size(max = 100)
+    @Column(name = "first_name", nullable = false, length = 100)
     private String firstName;
 
     @NotBlank(message = "Last name is required")
-    @Size(max = 100) // Add max size constraint
-    @Column(name = "last_name", nullable = false, length = 100) // Explicit length
+    @Size(max = 100)
+    @Column(name = "last_name", nullable = false, length = 100)
     private String lastName;
 
     @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
-    @Size(max = 255) // Add max size constraint
-    @Column(nullable = false, unique = true, length = 255) // Explicit length
+    @Size(max = 255)
+    @Column(nullable = false, unique = true, length = 255)
     private String email;
 
     @NotBlank(message = "Password is required")
-    // Note: This field should store the *hashed* password, not the plain text password.
-    // Implement password hashing in your service layer before saving.
-    @Column(nullable = false) // Length depends on hashing algorithm output, usually 60-80 chars for bcrypt
-    private String password; // Stores the hashed password
+    @Column(nullable = false)
+    private String password;
 
     @Size(max = 500, message = "Bio cannot exceed 500 characters")
-    @Column(length = 500) // Explicit length matching Size
+    @Column(length = 500)
     private String bio;
 
+    @Size(max = 255)
     @Column(name = "profile_picture_url")
-    // Consider adding @URL if you use Bean Validation URL constraint
-    @Size(max = 255) // Add max size constraint for URLs
     private String profilePictureUrl;
 
     @Past(message = "Date of birth must be in the past")
@@ -70,79 +68,102 @@ public class Viber {
     private LocalDate dateOfBirth;
 
     @CreationTimestamp
-    @Column(name = "created_at", updatable = false, nullable = false) // Explicitly nullable = false
-    @NotNull // Add validation constraint
+    @Column(name = "created_at", updatable = false, nullable = false)
+    @NotNull
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at", nullable = false) // Explicitly nullable = false
-    @NotNull // Add validation constraint
+    @Column(name = "updated_at", nullable = false)
+    @NotNull
     private LocalDateTime updatedAt;
 
-    // --- Relationships (One-to-Many) ---
+    // FOREIGN REFERENCES
 
-    // A Viber can have many ViberMedia entries in their collection
     @OneToMany(mappedBy = "viber", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @Builder.Default // Initialize with default empty list when using @Builder
-    // @NotNull // Collection itself is not null, individual items might be validated via @Valid
-    // @Valid // Validate elements in the collection - useful if ViberMedia had validation rules
+    @Builder.Default
     private List<ViberMedia> viberMedia = new ArrayList<>();
 
-    // A Viber can own many VibeBoards
     @OneToMany(mappedBy = "viber", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Builder.Default
     private List<VibeBoard> vibeBoards = new ArrayList<>();
 
-    // A Viber can be awarded many ViberBadge instances
-    // Consider Set if a Viber can only earn a specific badge once, and order doesn't matter.
-    // Using List allows for earning the same badge multiple times.
     @OneToMany(mappedBy = "viber", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @Builder.Default
     private List<ViberBadge> viberBadges = new ArrayList<>();
 
-    // A Viber can send many VibeRequests
-    // No cascade=ALL or orphanRemoval=true here usually, as deleting a user might not delete requests
     @OneToMany(mappedBy = "sender", fetch = FetchType.LAZY)
     @Builder.Default
-    private Set<VibeRequest> sentRequests = new HashSet<>(); // Using Set as request order doesn't matter
+    private Set<VibeRequest> sentRequests = new HashSet<>();
 
-    // A Viber can receive many VibeRequests
-    // No cascade=ALL or orphanRemoval=true here usually
     @OneToMany(mappedBy = "receiver", fetch = FetchType.LAZY)
     @Builder.Default
-    private Set<VibeRequest> receivedRequests = new HashSet<>(); // Using Set
+    private Set<VibeRequest> receivedRequests = new HashSet<>();
 
-    // --- Helper methods for managing collections (important for bidirectional relationships) ---
+    // METHODS
 
     public void addViberMedia(ViberMedia media) {
-        if (media != null) {
-            viberMedia.add(media);
-            media.setViber(this); // Set the many-to-one side
-        }
+        viberMedia.add(media);
+        media.setViber(this);
     }
 
     public void removeViberMedia(ViberMedia media) {
-        if (media != null) {
-            viberMedia.remove(media);
-            media.setViber(null); // Unset the many-to-one side
-        }
+        viberMedia.remove(media);
+        media.setViber(null);
     }
 
-    // Add similar helper methods for vibeBoards, viberBadges, sentRequests, receivedRequests
-    // Example for VibeBoard:
     public void addVibeBoard(VibeBoard board) {
-        if (board != null) {
-            vibeBoards.add(board);
-            board.setViber(this); // Set the many-to-one side
-        }
+        vibeBoards.add(board);
+        board.setViber(this);
     }
 
     public void removeVibeBoard(VibeBoard board) {
-        if (board != null) {
-            vibeBoards.remove(board);
-            board.setViber(null); // Unset the many-to-one side
+        vibeBoards.remove(board);
+        board.setViber(null);
+    }
+
+    public void addViberBadge(ViberBadge badge) {
+        viberBadges.add(badge);
+        badge.setViber(this);
+    }
+
+    public void removeViberBadge(ViberBadge badge) {
+        viberBadges.remove(badge);
+        badge.setViber(null);
+    }
+
+    public void sendRequest(VibeRequest request) {
+        sentRequests.add(request);
+        request.setSender(this);
+    }
+
+    public void receiveRequest(VibeRequest request) {
+        receivedRequests.add(request);
+        request.setReceiver(this);
+    }
+
+    public void removeSentRequest(VibeRequest request) {
+        sentRequests.remove(request);
+        request.setSender(null);
+    }
+
+    public void removeReceivedRequest(VibeRequest request) {
+        receivedRequests.remove(request);
+        request.setReceiver(null);
+    }
+
+    public boolean hasProfilePicture() {
+        return profilePictureUrl != null && !profilePictureUrl.isEmpty();
+    }
+
+    public void updateBio(String newBio) {
+        if (newBio != null && newBio.length() <= 500) {
+            this.bio = newBio;
+        } else {
+            throw new IllegalArgumentException("Bio must be less than or equal to 500 characters.");
         }
     }
 
-    // ... add methods for viberBadges, sentRequests, receivedRequests ...
+    public boolean hasCompleteProfile() {
+        return username != null && firstName != null && lastName != null && email != null;
+    }
 }

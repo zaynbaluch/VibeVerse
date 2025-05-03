@@ -3,6 +3,9 @@ package com.vibeverse.server.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import lombok.Setter;
+import lombok.Getter;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UuidGenerator; // Import UuidGenerator
 
@@ -11,38 +14,41 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "viber_badges")
-// Note: If a Viber can only have a badge once, add a unique constraint like this:
-// @Table(name = "viber_badges", uniqueConstraints = @UniqueConstraint(columnNames = {"viber_id", "badge_id"}))
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(onlyExplicitlyIncluded = true) // Use ID for equals/hashCode
-@ToString(exclude = {"viber", "badge"}) // Exclude lazy fields
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(exclude = {"viber", "badge"})
 public class ViberBadge {
 
     @Id
-    @UuidGenerator // Use @UuidGenerator for consistency
+    @UuidGenerator
     @Column(name = "viber_badge_id", updatable = false, nullable = false)
-    @EqualsAndHashCode.Include // Include ID in equals/hashCode
+    @EqualsAndHashCode.Include
     private UUID viberBadgeId;
+
+    @CreationTimestamp
+    @Column(name = "awarded_at", nullable = false, updatable = false)
+    @NotNull
+    private LocalDateTime awardedAt;
+
+    //FOREIGN REFERENCES
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "viber_id", nullable = false)
-    @NotNull // Associated Viber is required
-    private Viber viber; // Foreign key reference to Viber
+    @NotNull
+    @Getter
+    @Setter
+    private Viber viber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "badge_id", nullable = false)
-    @NotNull // Associated Badge is required
-    private Badge badge; // Foreign key reference to Badge
+    @NotNull
+    @Getter
+    @Setter
+    private Badge badge;
 
-    @CreationTimestamp // Records when this specific ViberBadge instance was created (awarded)
-    @Column(name = "awarded_at", nullable = false, updatable = false)
-    @NotNull // Add validation constraint
-    private LocalDateTime awardedAt;
 
-    // No need for @UpdateTimestamp here as this entity typically represents a single event (being awarded)
-    // If you needed to track modifications to *this* record (e.g., notes, status), you would add it.
 }

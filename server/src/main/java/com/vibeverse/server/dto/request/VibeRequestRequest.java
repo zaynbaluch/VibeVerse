@@ -1,4 +1,4 @@
-package com.vibeverse.server.dto.request;
-
-public class VibeRequestRequest {
-}
+//package com.vibeverse.server.dto.request;
+//
+//public class VibeRequestRequest {
+//}

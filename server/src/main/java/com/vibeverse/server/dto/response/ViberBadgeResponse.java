@@ -1,4 +1,4 @@
-package com.vibeverse.server.dto.response;
-
-public class ViberBadgeResponse {
-}
+//package com.vibeverse.server.dto.response;
+//
+//public class ViberBadgeResponse {
+//}

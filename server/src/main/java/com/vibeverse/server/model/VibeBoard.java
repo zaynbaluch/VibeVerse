@@ -21,60 +21,68 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(onlyExplicitlyIncluded = true) // Use ID for equals/hashCode
-@ToString(exclude = {"viber", "mediaItems"}) // Exclude lazy field and collection
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(exclude = {"viber", "mediaItems"})
 public class VibeBoard {
 
     @Id
     @UuidGenerator
     @Column(name = "vboard_id", updatable = false, nullable = false)
-    @EqualsAndHashCode.Include // Include ID in equals/hashCode
+    @EqualsAndHashCode.Include
     private UUID vboardId;
 
     @Column(name = "name", nullable = false)
-    @NotNull // Add validation constraint
-    @Size(min = 1, max = 255) // Example size constraint
+    @NotNull
+    @Size(min = 1, max = 255)
     private String name;
 
     @Column(name = "aurapoints", nullable = false)
-    @NotNull // Add validation constraint
-    @Min(value = 0) // Aura points shouldn't be negative
+    @NotNull
+    @Min(value = 0)
     private Integer auraPoints;
 
     @Column(name = "description", columnDefinition = "TEXT")
-    @Lob // Mark as large object
+    @Lob
     private String description;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "viber_id", nullable = false)
-    @NotNull // Associated Viber user is required
-    private Viber viber; // Represents the associated Viber user
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
-    @NotNull // Add validation constraint
+    @NotNull
     private LocalDateTime createdAt;
 
-    // Consolidated relationship with a list of generic Media entities
-    // mappedBy="vibeBoard" requires a 'vibeBoard' field in the Media entity
-    @OneToMany(mappedBy = "vibeBoard", cascade = CascadeType.ALL, orphanRemoval = true)
-    @Builder.Default // Initialize with default empty list when using @Builder
-    @NotNull // The list itself should not be null
-    @Valid // Validate each Media item in the list
+    // FOREIGN REFERENCES
+
+    @OneToMany
+    @Builder.Default
+    @NotNull
+    @Valid
     private List<Media> mediaItems = new ArrayList<>();
 
-    // Helper methods for managing the mediaItems list (update to set back-reference)
-    public void addMediaItem(Media mediaItem) {
-        if (mediaItem != null) {
-            mediaItems.add(mediaItem);
-            mediaItem.setVibeBoard(this); // Set the back-reference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "viber_id", nullable = false)
+    @NotNull
+    private Viber viber;
+
+    // METHODS
+
+    public void addMediaItem(Media media) {
+        if (mediaItems == null) {
+            mediaItems = new ArrayList<>();
+        }
+        mediaItems.add(media);
+    }
+
+    public void removeMediaItem(Media media) {
+        if (mediaItems != null) {
+            mediaItems.remove(media);
         }
     }
 
-    public void removeMediaItem(Media mediaItem) {
-        if (mediaItem != null) {
-            mediaItems.remove(mediaItem);
-            mediaItem.setVibeBoard(null); // Remove the back-reference
+    public void assignViber(Viber viber) {
+        if (viber == null) {
+            throw new IllegalArgumentException("Viber cannot be null");
         }
+        this.viber = viber;
     }
+
 }

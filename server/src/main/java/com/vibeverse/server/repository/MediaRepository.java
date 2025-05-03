@@ -1,12 +1,12 @@
-package com.vibeverse.server.repository;
-
-import com.vibeverse.server.model.Media;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.UUID;
-
-@Repository
-public interface MediaRepository extends JpaRepository<Media, UUID> {
-    // Custom queries can be added here if needed, e.g., findByTitle, findByTagsContaining
-}
+//package com.vibeverse.server.repository;
+//
+//import com.vibeverse.server.model.Media;
+//import org.springframework.data.jpa.repository.JpaRepository;
+//import org.springframework.stereotype.Repository;
+//
+//import java.util.UUID;
+//
+//@Repository
+//public interface MediaRepository extends JpaRepository<Media, UUID> {
+//    // Custom queries can be added here if needed, e.g., findByTitle, findByTagsContaining
+//}

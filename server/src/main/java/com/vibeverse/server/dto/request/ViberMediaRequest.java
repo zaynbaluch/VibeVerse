@@ -1,4 +1,4 @@
-package com.vibeverse.server.dto.request;
-
-public class ViberMediaRequest {
-}
+//package com.vibeverse.server.dto.request;
+//
+//public class ViberMediaRequest {
+//}

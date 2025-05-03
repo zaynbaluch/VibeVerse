@@ -1,4 +1,4 @@
-package com.vibeverse.server.dto.request;
-
-public class ViberBadgeRequest {
-}
+//package com.vibeverse.server.dto.request;
+//
+//public class ViberBadgeRequest {
+//}

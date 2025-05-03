@@ -9,8 +9,10 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.type.SqlTypes;
+import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -22,59 +24,74 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(onlyExplicitlyIncluded = true) // Use ID for equals/hashCode
-@ToString(exclude = {"specificData", "vibeBoard"}) // Exclude potentially large JSON and lazy relationship
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(exclude = {"specificData"})
 public class Media {
 
     @Id
     @UuidGenerator
     @Column(name = "media_id", updatable = false, nullable = false)
-    @EqualsAndHashCode.Include // Include ID in equals/hashCode
+    @EqualsAndHashCode.Include
     private UUID mediaId;
 
     @Column(name = "title", nullable = false, length = 255) // Added length
-    @NotNull // Add validation constraint
-    @Size(min = 1, max = 255) // Added Size constraint mirroring DTO
+    @NotNull
+    @Size(min = 1, max = 255)
     private String title;
 
     @Column(name = "description", columnDefinition = "TEXT")
-    @Lob // Mark as large object
-    @Size(max = 1000) // Added Size constraint mirroring DTO limit
+    @Lob
+    @Size(max = 1000)
     private String description;
 
-    @Column(name = "image_url", length = 255) // Added length
-    // Consider adding @URL if you use Bean Validation URL constraint
-    @Size(max = 255) // Added Size constraint mirroring DTO
+    @Column(name = "image_url", length = 255)
+    @URL
+    @Size(max = 255)
     private String imageUrl;
 
-    @JdbcTypeCode(SqlTypes.JSON) // Use JdbcTypeCode for JSON mapping (Hibernate 6+)
-    @Column(name = "tags", columnDefinition = "jsonb") // Store as JSONB array in DB (PostgreSQL example)
-    // @NotNull // Add if tags list should never be null
-    private List<String> tags; // Map to List<String> in Java
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "tags", columnDefinition = "jsonb")
+    private List<String> tags;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    @Column(name = "specific_data", columnDefinition = "jsonb") // JSONB column for dynamic data (PostgreSQL example)
-    // @NotNull // Add if specificData map should never be null
-    private Map<String, Object> specificData; // JSONB column for dynamic data
+    @Column(name = "specific_data", columnDefinition = "jsonb")
+    private Map<String, Object> specificData;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
-    @NotNull // Add validation constraint
+    @NotNull
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp // Automatically set/update timestamp on entity changes
-    @Column(name = "updated_at", nullable = false) // Often 'updated_at' is non-nullable
-    @NotNull // Add validation constraint
-    private LocalDateTime updatedAt; // Use @UpdateTimestamp
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
+    @NotNull
+    private LocalDateTime updatedAt;
 
-    // Many-to-One relationship back to VibeBoard (if it exists)
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vboard_id") // Foreign key column in the 'media' table
-    private VibeBoard vibeBoard; // Represents the VibeBoard this media belongs to (can be null if not on a board)
+    // FOREIGN REFERENCES
 
-    // Helper method to set the back-reference when adding to VibeBoard list
-    // This should be called from VibeBoard's addMediaItem method
-    public void setVibeBoard(VibeBoard vibeBoard) {
-        this.vibeBoard = vibeBoard;
+    @OneToMany(mappedBy = "media", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<ViberMedia> viberMedia = new ArrayList<>();
+
+    // METHODS
+
+    public void addViberMedia(ViberMedia vm) {
+        viberMedia.add(vm);
+        vm.setMedia(this);
     }
+
+    public void removeViberMedia(ViberMedia vm) {
+        viberMedia.remove(vm);
+        vm.setMedia(null);
+    }
+
+
+    public void clearViberMedia() {
+        viberMedia.clear();
+    }
+
+    public boolean hasViberMedia(ViberMedia vm) {
+        return viberMedia.contains(vm);
+    }
+
 }
