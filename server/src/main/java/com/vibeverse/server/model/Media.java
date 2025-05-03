@@ -36,7 +36,7 @@ public class Media {
     private String imageUrl;
 
     @Column(name = "tags", columnDefinition = "TEXT[]")
-    private String[] tags; // Array of tags
+    private String tags; // Array of tags
 
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "specific_data", columnDefinition = "jsonb")

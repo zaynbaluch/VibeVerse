@@ -1,4 +1,7 @@
 package com.vibeverse.server.repository;
 
-public class ViberBadgeRepository {
+import com.vibeverse.server.model.ViberBadge;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ViberBadgeRepository extends JpaRepository<ViberBadge, Integer> {
 }
