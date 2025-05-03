@@ -5,7 +5,8 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import java.sql.Date;
+// import java.sql.Date; // Removed deprecated import
+import java.time.LocalDate; // Import the modern Date class
 import java.time.LocalDateTime;
 
 @Entity
@@ -49,7 +50,7 @@ public class Viber {
 
     @Past(message = "Date of birth must be in the past")
     @Column(name = "date_of_birth")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth; // Changed from java.sql.Date to java.time.LocalDate
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

@@ -3,6 +3,7 @@ package com.vibeverse.server.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UuidGenerator; // Import Hibernate's UuidGenerator
 
 import java.time.LocalDateTime;
 import java.util.UUID;

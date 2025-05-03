@@ -3,8 +3,10 @@ package com.vibeverse.server.model;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,7 +20,7 @@ import java.util.UUID;
 public class VibeBoard {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @UuidGenerator
     @Column(name = "vboard_id", updatable = false, nullable = false)
     private UUID vboardId;
 
@@ -31,21 +33,27 @@ public class VibeBoard {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "viber_id", nullable = false)
-    private UUID viberId; // assuming it references another table's UUID
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "viber_id", nullable = false)
+    private Viber viber; // Represents the associated Viber user
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    // Relationships (assuming Book, Movie, Game entities exist with FK to vboard_id)
+    // Consolidated relationship with a list of generic Media entities
+    @OneToMany(mappedBy = "vibeBoard", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default // Initialize with default empty list when using @Builder
+    private List<Media> mediaItems = new ArrayList<>(); // Changed field name for clarity
 
-//    @Transient
-//    private List<Book> books;
-//
-//    @Transient
-//    private List<Movie> movies;
-//
-//    @Transient
-//    private List<Game> games;
+    // Removed the separate lists for books, movies, and games
+
+    // Consider adding helper methods for managing the mediaItems list
+    public void addMediaItem(Media mediaItem) {
+        this.mediaItems.add(mediaItem);
+    }
+
+    public void removeMediaItem(Media mediaItem) {
+        this.mediaItems.remove(mediaItem);
+    }
 }
