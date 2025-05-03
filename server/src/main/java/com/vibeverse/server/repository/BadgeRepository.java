@@ -8,5 +8,7 @@ import java.util.UUID;
 
 @Repository
 public interface BadgeRepository extends JpaRepository<Badge, UUID> {
+
+    // Custom finder method to check if a badge name already exists
     boolean existsByName(String name);
 }

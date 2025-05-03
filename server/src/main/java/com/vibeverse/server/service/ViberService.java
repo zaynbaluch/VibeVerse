@@ -11,4 +11,9 @@ public interface ViberService {
     ViberResponseDto getViberById(Long id);
     ViberResponseDto updateViber(Long id, ViberRequestDto request);
     void deleteViber(Long id);
+
+    // Consider adding methods for finding by username/email, password change, etc.
+    // Optional: ViberResponseDto findByUsername(String username);
+    // Optional: ViberResponseDto findByEmail(String email);
+    // void changePassword(Long id, String oldPassword, String newPassword);
 }

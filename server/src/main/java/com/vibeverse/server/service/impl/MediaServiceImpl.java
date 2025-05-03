@@ -2,88 +2,88 @@ package com.vibeverse.server.service.impl;
 
 import com.vibeverse.server.dto.request.MediaRequestDto;
 import com.vibeverse.server.dto.response.MediaResponseDto;
+import com.vibeverse.server.mapper.MediaMapper; // Import the mapper
 import com.vibeverse.server.model.Media;
 import com.vibeverse.server.repository.MediaRepository;
 import com.vibeverse.server.service.MediaService;
+import jakarta.persistence.EntityNotFoundException; // Import EntityNotFoundException
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
+// Removed manual mapping method and unused imports
 
 @Service
-@RequiredArgsConstructor
-@Transactional
+@RequiredArgsConstructor // Injects final fields (MediaRepository, MediaMapper)
+@Transactional // Apply transactional behavior to service methods by default
 public class MediaServiceImpl implements MediaService {
 
     private final MediaRepository mediaRepository;
+    private final MediaMapper mediaMapper; // Inject the MapStruct mapper
 
     @Override
     public MediaResponseDto createMedia(MediaRequestDto requestDto) {
-        Media media = Media.builder()
-                .title(requestDto.getTitle())
-                .description(requestDto.getDescription())
-                .imageUrl(requestDto.getImageUrl())
-                .tags(requestDto.getTags())
-                .specificData(requestDto.getSpecificData())
-                .build();
+        // Use MapStruct to convert the Request DTO to the Media entity
+        // MapStruct handles List<String> and Map<String, Object> mapping automatically
+        Media media = mediaMapper.toEntity(requestDto);
 
-        Media saved = mediaRepository.save(media);
-        return mapToResponseDto(saved);
+        // Save the new entity to the database
+        Media savedMedia = mediaRepository.save(media);
+
+        // Use MapStruct to convert the saved entity back to the Response DTO
+        return mediaMapper.toDto(savedMedia);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true) // Read-only transaction for fetching data
     public List<MediaResponseDto> getAllMedia() {
-        return mediaRepository.findAll()
-                .stream()
-                .map(this::mapToResponseDto)
-                .collect(Collectors.toList());
+        // Fetch all entities
+        List<Media> mediaList = mediaRepository.findAll();
+        // Use MapStruct to convert the list of entities to a list of Response DTOs
+        return mediaMapper.toDtoList(mediaList);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true) // Read-only transaction for fetching data
     public MediaResponseDto getMediaById(UUID mediaId) {
+        // Find entity by ID, or throw EntityNotFoundException if not found
         Media media = mediaRepository.findById(mediaId)
-                .orElseThrow(() -> new RuntimeException("Media not found with ID: " + mediaId));
-        return mapToResponseDto(media);
+                // Changed RuntimeException to EntityNotFoundException for consistency
+                .orElseThrow(() -> new EntityNotFoundException("Media not found with ID: " + mediaId));
+        // Use MapStruct to convert the entity to a Response DTO
+        return mediaMapper.toDto(media);
     }
 
     @Override
     public MediaResponseDto updateMedia(UUID mediaId, MediaRequestDto requestDto) {
-        Media media = mediaRepository.findById(mediaId)
-                .orElseThrow(() -> new RuntimeException("Media not found with ID: " + mediaId));
+        // Find the existing entity by ID
+        Media existingMedia = mediaRepository.findById(mediaId)
+                // Changed RuntimeException to EntityNotFoundException for consistency
+                .orElseThrow(() -> new EntityNotFoundException("Media not found with ID: " + mediaId));
 
-        media.setTitle(requestDto.getTitle());
-        media.setDescription(requestDto.getDescription());
-        media.setImageUrl(requestDto.getImageUrl());
-        media.setTags(requestDto.getTags());
-        media.setSpecificData(requestDto.getSpecificData());
+        // Use MapStruct to update the fields of the existing entity from the Request DTO
+        // MapStruct handles transferring fields based on the mapper definition
+        mediaMapper.updateEntityFromDto(requestDto, existingMedia);
 
-        Media updated = mediaRepository.save(media);
-        return mapToResponseDto(updated);
+        // Save the updated entity (JPA will perform an update)
+        // The @UpdateTimestamp on the entity will automatically be set here
+        Media updatedMedia = mediaRepository.save(existingMedia);
+
+        // Use MapStruct to convert the updated entity back to the Response DTO
+        return mediaMapper.toDto(updatedMedia);
     }
 
     @Override
     public void deleteMedia(UUID mediaId) {
+        // Check if the entity exists before deleting
+        // This gives a specific EntityNotFoundException
         if (!mediaRepository.existsById(mediaId)) {
-            throw new RuntimeException("Media not found with ID: " + mediaId);
+            // Changed RuntimeException to EntityNotFoundException for consistency
+            throw new EntityNotFoundException("Media not found with ID: " + mediaId);
         }
+        // Delete the entity by ID
         mediaRepository.deleteById(mediaId);
-    }
-
-    private MediaResponseDto mapToResponseDto(Media media) {
-        return MediaResponseDto.builder()
-                .mediaId(media.getMediaId())
-                .title(media.getTitle())
-                .description(media.getDescription())
-                .imageUrl(media.getImageUrl())
-                .tags(media.getTags())
-                .specificData(media.getSpecificData())
-                .createdAt(media.getCreatedAt())
-                .updatedAt(media.getUpdatedAt())
-                .build();
     }
 }

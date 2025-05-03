@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface MediaRepository extends JpaRepository<Media, UUID> {
+    // Custom queries can be added here if needed, e.g., findByTitle, findByTagsContaining
 }

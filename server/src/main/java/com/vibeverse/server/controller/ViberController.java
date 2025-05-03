@@ -12,37 +12,43 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/vibers")
-@RequiredArgsConstructor
+@RequiredArgsConstructor // Injects the ViberService
 public class ViberController {
 
-    private final ViberService service;
+    private final ViberService viberService; // Renamed service variable
 
     @PostMapping
     public ResponseEntity<ViberResponseDto> create(@Valid @RequestBody ViberRequestDto req) {
-        ViberResponseDto dto = service.createViber(req);
+        ViberResponseDto dto = viberService.createViber(req);
         return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 
     @GetMapping
     public ResponseEntity<List<ViberResponseDto>> listAll() {
-        return ResponseEntity.ok(service.getAllVibers());
+        return ResponseEntity.ok(viberService.getAllVibers());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ViberResponseDto> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getViberById(id));
+        // The service layer handles the EntityNotFoundException,
+        // Spring will automatically translate it to a 404 Not Found response.
+        return ResponseEntity.ok(viberService.getViberById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ViberResponseDto> update(
             @PathVariable Long id,
             @Valid @RequestBody ViberRequestDto req) {
-        return ResponseEntity.ok(service.updateViber(id, req));
+        // The service layer handles the EntityNotFoundException,
+        // Spring will automatically translate it to a 404 Not Found response.
+        return ResponseEntity.ok(viberService.updateViber(id, req));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        service.deleteViber(id);
-        return ResponseEntity.noContent().build();
+        // The service layer handles the EntityNotFoundException,
+        // Spring will automatically translate it to a 404 Not Found response.
+        viberService.deleteViber(id);
+        return ResponseEntity.noContent().build(); // 204 No Content on successful deletion
     }
 }

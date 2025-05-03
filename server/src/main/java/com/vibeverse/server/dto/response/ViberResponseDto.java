@@ -2,7 +2,7 @@ package com.vibeverse.server.dto.response;
 
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDate; // Use java.time.LocalDate
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,7 +19,10 @@ public class ViberResponseDto {
     private String email;
     private String bio;
     private String profilePictureUrl;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth; // Use java.time.LocalDate
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    // Password field is deliberately EXCLUDED for security reasons.
+    // Never expose sensitive data like passwords (even hashed) in response DTOs.
 }

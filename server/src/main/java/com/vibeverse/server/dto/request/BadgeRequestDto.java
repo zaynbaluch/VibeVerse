@@ -15,7 +15,7 @@ public class BadgeRequestDto {
     @Size(max = 100, message = "Name must be <= 100 characters")
     private String name;
 
-    @Size(max = 1000, message = "Description must be <= 1000 characters")
+    @Size(max = 1000, message = "Description must be <= 1000 characters") // Application level size limit
     private String description;
 
     @Size(max = 255, message = "Icon URL must be <= 255 characters")
