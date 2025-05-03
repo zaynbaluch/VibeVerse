@@ -1,11 +1,11 @@
 package com.vibeverse.server.controller;
 
-import com.vibeverse.server.model.Viber;
+import com.vibeverse.server.dto.request.ViberRequestDto;
+import com.vibeverse.server.dto.response.ViberResponseDto;
 import com.vibeverse.server.service.ViberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,35 +15,34 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ViberController {
 
-    private final ViberService viberService;
+    private final ViberService service;
 
     @PostMapping
-    public ResponseEntity<Viber> createViber(@Valid @RequestBody Viber viber) {
-        Viber createdViber = viberService.createViber(viber);
-        return new ResponseEntity<>(createdViber, HttpStatus.CREATED);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Viber> getViberById(@PathVariable Long id) {
-        Viber viber = viberService.getViberById(id);
-        return ResponseEntity.ok(viber);
+    public ResponseEntity<ViberResponseDto> create(@Valid @RequestBody ViberRequestDto req) {
+        ViberResponseDto dto = service.createViber(req);
+        return ResponseEntity.status(HttpStatus.CREATED).body(dto);
     }
 
     @GetMapping
-    public ResponseEntity<List<Viber>> getAllVibers() {
-        List<Viber> vibers = viberService.getAllVibers();
-        return ResponseEntity.ok(vibers);
+    public ResponseEntity<List<ViberResponseDto>> listAll() {
+        return ResponseEntity.ok(service.getAllVibers());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ViberResponseDto> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getViberById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Viber> updateViber(@PathVariable Long id, @Valid @RequestBody Viber viberDetails) {
-        Viber updatedViber = viberService.updateViber(id, viberDetails);
-        return ResponseEntity.ok(updatedViber);
+    public ResponseEntity<ViberResponseDto> update(
+            @PathVariable Long id,
+            @Valid @RequestBody ViberRequestDto req) {
+        return ResponseEntity.ok(service.updateViber(id, req));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteViber(@PathVariable Long id) {
-        viberService.deleteViber(id);
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.deleteViber(id);
         return ResponseEntity.noContent().build();
     }
 }
