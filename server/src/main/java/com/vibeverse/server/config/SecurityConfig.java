@@ -33,6 +33,9 @@ public class SecurityConfig {
                         // Permit GET/POST to /api/vibers/**
                         .requestMatchers(HttpMethod.GET, "/api/vibers/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/vibers").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/vibers/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/vibers/").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/vibers").permitAll()
 
                         // Permit other public endpoints (e.g., auth, media)
                         //.requestMatchers(HttpMethod.GET, "/api/media/**").permitAll()
