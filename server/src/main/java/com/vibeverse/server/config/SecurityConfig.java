@@ -2,47 +2,45 @@ package com.vibeverse.server.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod; // Import HttpMethod
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity; // Optional but good practice
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer; // Import for disabling csrf
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 
 @Configuration
-@EnableWebSecurity // Optional but good practice to explicitly enable Spring Security
+@EnableWebSecurity
 public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        // Use a strong hashing algorithm like BCrypt
         return new BCryptPasswordEncoder();
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                // By default, CSRF is enabled. Disable only if you have a specific reason (e.g., stateless API with tokens)
-                // For a typical web app, keep it enabled. If you have a stateless API, you might disable it safely.
-                // For this example, we'll disable it, but be aware of the implications.
-                .csrf(AbstractHttpConfigurer::disable) // Modern way to disable CSRF
+                // Modern way to disable CSRF (non-deprecated)
+                .csrf(AbstractHttpConfigurer::disable)
+
+                // Session management (optional for JWT/stateless APIs)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .authorizeHttpRequests(auth -> auth
-                        // Permit POST requests to /api/vibers (e.g., for user registration)
+                        // Permit GET/POST to /api/vibers/**
+                        .requestMatchers(HttpMethod.GET, "/api/vibers/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/vibers").permitAll()
 
-                        // Permit other specific public endpoints (e.g., auth, media list if public)
-                        // .requestMatchers("/api/auth/**").permitAll()
-                        // .requestMatchers(HttpMethod.GET, "/api/media").permitAll()
+                        // Permit other public endpoints (e.g., auth, media)
+                        //.requestMatchers(HttpMethod.GET, "/api/media/**").permitAll()
 
-                        // Require authentication for any other request
+                        // Require authentication for all other requests
                         .anyRequest().authenticated()
                 );
-        // .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // Consider STATELESS for token-based APIs
 
         return http.build();
     }
-
-    // You might add configuration for form login, OAuth2, JWT handling, etc. here
 }

@@ -5,6 +5,8 @@ import com.vibeverse.server.dto.response.ViberResponseDto;
 import com.vibeverse.server.model.Viber;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class ViberMapper {
 
@@ -19,6 +21,8 @@ public class ViberMapper {
                 .bio(dto.getBio())
                 .profilePictureUrl(dto.getProfilePictureUrl())
                 .dateOfBirth(dto.getDateOfBirth())
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
                 .build();
     }
 

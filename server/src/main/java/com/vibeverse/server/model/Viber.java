@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
-@Table(name = "vibers")
+@Table
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,7 +24,7 @@ public class Viber {
 
     @Id
     @UuidGenerator
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false, nullable = false, columnDefinition = "uuid")
     @EqualsAndHashCode.Include
     private UUID id;
 
