@@ -17,6 +17,6 @@ public interface BadgeRepository extends JpaRepository<Badge, UUID> {
 //    // Find by name containing (case-insensitive)
 //    List<Badge> findByNameContainingIgnoreCase(String namePart);
 //
-//    // Check if name exists (for validation)
-//    boolean existsByName(String name);
+    // Check if name exists (for validation)
+    boolean existsByName(String name);
 }

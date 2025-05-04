@@ -14,25 +14,23 @@ import java.util.UUID;
 
 @Repository
 public interface ViberRepository extends JpaRepository<Viber, UUID> {
-//
-//    // Basic queries
-//    Optional<Viber> findByUsername(String username);
-//    Optional<Viber> findByEmail(String email);
-//    boolean existsByUsername(String username);
-//    boolean existsByEmail(String email);
-//
-//    // Search queries
-//    List<Viber> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstName, String lastName);
-//
-//    // Filter queries
-//    List<Viber> findByDateOfBirthBetween(LocalDate start, LocalDate end);
-//    List<Viber> findByCreatedAtAfter(LocalDateTime cutoff);
-//
-//    // Profile completeness check
-//    @Query("SELECT v FROM Viber v WHERE v.profilePictureUrl IS NOT NULL AND v.bio IS NOT NULL")
-//    List<Viber> findWithCompleteProfiles();
-//
-//    // Count badges per viber
-//    @Query("SELECT SIZE(v.viberBadges) FROM Viber v WHERE v.id = :viberId")
-//    int countBadgesForViber(@Param("viberId") UUID viberId);
+    Optional<Viber> findByUsername(String username);
+
+    Optional<Viber> findByEmail(String email);
+
+    boolean existsByUsername(String username);
+
+    boolean existsByEmail(String email);
+
+    @Query("SELECT v FROM Viber v WHERE LOWER(v.firstName) LIKE LOWER(concat('%', :query, '%')) OR LOWER(v.lastName) LIKE LOWER(concat('%', :query, '%'))")
+    List<Viber> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(
+            @Param("query") String firstNameQuery,
+            @Param("query") String lastNameQuery
+    );
+
+    @Query("SELECT v FROM Viber v WHERE v.profilePictureUrl IS NOT NULL AND v.bio IS NOT NULL")
+    List<Viber> findWithCompleteProfiles();
+
+    @Query("SELECT v FROM Viber v WHERE v.dateOfBirth BETWEEN :start AND :end")
+    List<Viber> findByBirthDateBetween(@Param("start") LocalDate start, @Param("end") LocalDate end);
 }

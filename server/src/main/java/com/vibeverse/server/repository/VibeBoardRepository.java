@@ -1,6 +1,7 @@
 package com.vibeverse.server.repository;
 
 import com.vibeverse.server.model.VibeBoard;
+import com.vibeverse.server.model.Viber;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,22 +14,16 @@ import java.util.UUID;
 @Repository
 public interface VibeBoardRepository extends JpaRepository<VibeBoard, UUID> {
 
-//    // Basic queries
-//    Optional<VibeBoard> findByName(String name);
-//    List<VibeBoard> findByNameContainingIgnoreCase(String namePart);
-//    boolean existsByName(String name);
-//
-//    // Find by Viber (owner)
-//    List<VibeBoard> findByViber_Id(UUID viberId);
-//
-//    // Find boards with minimum aura points
-//    List<VibeBoard> findByAuraPointsGreaterThanEqual(int minPoints);
-//
-//    // Search in description (full-text)
-//    @Query("SELECT v FROM VibeBoard v WHERE LOWER(v.description) LIKE LOWER(concat('%', :query, '%'))")
-//    List<VibeBoard> searchInDescription(@Param("query") String query);
-//
-//    // Count media items in a board
-//    @Query("SELECT SIZE(v.mediaItems) FROM VibeBoard v WHERE v.vboardId = :boardId")
-//    int countMediaItems(@Param("boardId") UUID boardId);
+    // Check if a board with the given name already exists for a specific Viber
+    boolean existsByNameAndViber(String name, Viber viber);
+
+    // Find all boards owned by a specific Viber
+    List<VibeBoard> findByViber_Id(UUID viberId);
+
+    // Find a specific board by its ID and the Viber's ID (to verify ownership)
+    Optional<VibeBoard> findByIdAndViber_Id(UUID boardId, UUID viberId);
+
+    // Check if a board with given ID exists and belongs to a Viber
+    boolean existsByIdAndViber_Id(UUID boardId, UUID viberId);
+
 }

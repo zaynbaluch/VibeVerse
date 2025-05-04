@@ -1,54 +1,61 @@
-//package com.vibeverse.server.service;
-//
-//import com.vibeverse.server.dto.request.BadgeRequestDto;
-//import com.vibeverse.server.dto.response.BadgeResponseDto;
-//
-//import java.util.List;
-//import java.util.UUID;
-//
-//public interface BadgeService {
-//
-//    /**
-//     * Creates a new Badge.
-//     *
-//     * @param request The DTO containing badge details.
-//     * @return The created Badge as a Response DTO.
-//     * @throws IllegalArgumentException if a badge with the same name already exists.
-//     */
-//    BadgeResponseDto createBadge(BadgeRequestDto request);
-//
-//    /**
-//     * Retrieves all Badges.
-//     *
-//     * @return A list of all Badges as Response DTOs.
-//     */
-//    List<BadgeResponseDto> getAllBadges();
-//
-//    /**
-//     * Retrieves a Badge by its ID.
-//     *
-//     * @param badgeId The ID of the Badge.
-//     * @return The Badge as a Response DTO.
-//     * @throws jakarta.persistence.EntityNotFoundException if the badge with the given ID is not found.
-//     */
-//    BadgeResponseDto getBadgeById(UUID badgeId);
-//
-//    /**
-//     * Updates an existing Badge.
-//     *
-//     * @param badgeId The ID of the Badge to update.
-//     * @param request The DTO containing updated badge details.
-//     * @return The updated Badge as a Response DTO.
-//     * @throws jakarta.persistence.EntityNotFoundException if the badge with the given ID is not found.
-//     * @throws IllegalArgumentException if the new badge name already exists for a different badge.
-//     */
-//    BadgeResponseDto updateBadge(UUID badgeId, BadgeRequestDto request);
-//
-//    /**
-//     * Deletes a Badge by its ID.
-//     *
-//     * @param badgeId The ID of the Badge to delete.
-//     * @throws jakarta.persistence.EntityNotFoundException if the badge with the given ID is not found.
-//     */
-//    void deleteBadge(UUID badgeId);
-//}
+package com.vibeverse.server.service;
+
+import com.vibeverse.server.dto.request.BadgeRequestDto;
+import com.vibeverse.server.dto.response.BadgeResponseDto;
+import com.vibeverse.server.exception.ResourceNotFoundException;
+import com.vibeverse.server.model.Badge;
+import com.vibeverse.server.repository.BadgeRepository;
+import com.vibeverse.server.dto.mapper.BadgeMapper;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class BadgeService {
+
+    private final BadgeRepository badgeRepository;
+    private final BadgeMapper badgeMapper;
+
+    public BadgeResponseDto createBadge(BadgeRequestDto dto) {
+        if (badgeRepository.existsByName(dto.getName())) {
+            throw new IllegalArgumentException("Badge name already exists");
+        }
+        Badge badge = badgeMapper.toEntity(dto);
+        return badgeMapper.toResponseDto(badgeRepository.save(badge));
+    }
+
+    @Transactional(readOnly = true)
+    public BadgeResponseDto getBadgeById(UUID id) {
+        Badge badge = badgeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Badge not found with id: " + id));
+        return badgeMapper.toResponseDto(badge);
+    }
+
+    @Transactional(readOnly = true)
+    public List<BadgeResponseDto> getAllBadges() {
+        return badgeRepository.findAll().stream()
+                .map(badgeMapper::toResponseDto)
+                .collect(Collectors.toList());
+    }
+
+    public BadgeResponseDto updateBadge(UUID id, BadgeRequestDto dto) {
+        Badge badge = badgeRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Badge not found with id: " + id));
+
+        badgeMapper.updateEntityFromDto(dto, badge);
+        return badgeMapper.toResponseDto(badgeRepository.save(badge));
+    }
+
+    public void deleteBadge(UUID id) {
+        if (!badgeRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Badge not found with id: " + id);
+        }
+        badgeRepository.deleteById(id);
+    }
+}
