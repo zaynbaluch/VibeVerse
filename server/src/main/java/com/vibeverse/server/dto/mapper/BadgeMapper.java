@@ -20,7 +20,7 @@ public class BadgeMapper {
     // Convert Entity → Response DTO
     public BadgeResponseDto toResponseDto(Badge entity) {
         return BadgeResponseDto.builder()
-                .badgeId(entity.getBadgeId())
+                .badgeId(entity.getId())
                 .name(entity.getName())
                 .description(entity.getDescription())
                 .iconUrl(entity.getIconUrl())

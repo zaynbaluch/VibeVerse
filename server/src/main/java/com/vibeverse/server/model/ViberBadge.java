@@ -27,7 +27,7 @@ public class ViberBadge {
     @UuidGenerator
     @Column(name = "viber_badge_id", updatable = false, nullable = false)
     @EqualsAndHashCode.Include
-    private UUID viberBadgeId;
+    private UUID Id;
 
     @CreationTimestamp
     @Column(name = "awarded_at", nullable = false, updatable = false)

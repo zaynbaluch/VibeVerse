@@ -44,7 +44,7 @@ public class VibeBoardMapper {
     // Convert Entity → Response DTO
     public VibeBoardResponseDto toResponseDto(VibeBoard entity) {
         return VibeBoardResponseDto.builder()
-                .vboardId(entity.getVboardId())
+                .vboardId(entity.getId())
                 .name(entity.getName())
                 .auraPoints(entity.getAuraPoints())
                 .description(entity.getDescription())

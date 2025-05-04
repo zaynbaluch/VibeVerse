@@ -31,7 +31,7 @@ public class Badge {
     @UuidGenerator
     @Column(name = "badge_id", updatable = false, nullable = false)
     @EqualsAndHashCode.Include
-    private UUID badgeId;
+    private UUID Id;
 
     @Column(name = "name", nullable = false, unique = true, length = 100)
     @NotNull

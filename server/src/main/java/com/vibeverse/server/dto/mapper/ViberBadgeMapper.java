@@ -33,10 +33,10 @@ public class ViberBadgeMapper {
     // Convert Entity → Response DTO
     public ViberBadgeResponseDto toResponseDto(ViberBadge entity) {
         return ViberBadgeResponseDto.builder()
-                .viberBadgeId(entity.getViberBadgeId())
+                .viberBadgeId(entity.getId())
                 .awardedAt(entity.getAwardedAt())
                 .viberId(entity.getViber().getId())
-                .badgeId(entity.getBadge().getBadgeId())
+                .badgeId(entity.getBadge().getId())
                 .build();
     }
 }

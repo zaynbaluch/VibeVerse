@@ -29,7 +29,7 @@ public class VibeBoard {
     @UuidGenerator
     @Column(name = "vboard_id", updatable = false, nullable = false)
     @EqualsAndHashCode.Include
-    private UUID vboardId;
+    private UUID Id;
 
     @Column(name = "name", nullable = false)
     @NotNull
