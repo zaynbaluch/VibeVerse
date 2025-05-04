@@ -1,8 +1,13 @@
 package com.vibeverse.server.model;
 
+import com.vibeverse.server.model.enums.MediaType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -14,37 +19,52 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class ViberMedia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "viber_media_id", updatable = false, nullable = false)
+    @EqualsAndHashCode.Include
     private UUID viberMediaId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "viber_id", nullable = false)
-    private Viber viber; // Foreign key reference to Viber
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "media_id", nullable = false)
-    private Media media; // Foreign key reference to Media
-
     @Column(name = "type", nullable = false)
-    private String type; // e.g., "book", "movie", "game"
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private MediaType type;
 
     @Column(name = "rating")
-    private Integer rating; // Optional rating given by the user
+    @Min(value = 1)
+    @Max(value = 10)
+    private Integer rating;
 
-    @Column(name = "review")
-    private String review; // Optional review text
+    @Column(name = "review", columnDefinition = "TEXT")
+    private String review;
 
     @Column(name = "progress")
-    private Double progress; // Progress percentage (0.0 to 1.0)
+    @Min(value = 0)
+    @Max(value = 1)
+    private Double progress;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    // FOREIGN REFERENCES
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "viber_id", nullable = false)
+    @NotNull
+    private Viber viber;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "media_id", nullable = false)
+    @NotNull
+    private Media media;
+
 }

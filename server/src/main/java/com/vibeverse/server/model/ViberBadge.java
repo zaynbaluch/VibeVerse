@@ -1,8 +1,13 @@
 package com.vibeverse.server.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import lombok.Setter;
+import lombok.Getter;
+
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UuidGenerator; // Import UuidGenerator
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -14,22 +19,36 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(exclude = {"viber", "badge"})
 public class ViberBadge {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @UuidGenerator
     @Column(name = "viber_badge_id", updatable = false, nullable = false)
-    private UUID viberBadgeId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "viber_id", nullable = false)
-    private Viber viber; // Foreign key reference to Viber
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "badge_id", nullable = false)
-    private Badge badge; // Foreign key reference to Badge
+    @EqualsAndHashCode.Include
+    private UUID Id;
 
     @CreationTimestamp
     @Column(name = "awarded_at", nullable = false, updatable = false)
+    @NotNull
     private LocalDateTime awardedAt;
+
+    //FOREIGN REFERENCES
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "viber_id", nullable = false)
+    @NotNull
+    @Getter
+    @Setter
+    private Viber viber;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "badge_id", nullable = false)
+    @NotNull
+    @Getter
+    @Setter
+    private Badge badge;
+
+
 }
