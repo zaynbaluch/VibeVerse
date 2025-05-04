@@ -1,9 +1,9 @@
 package com.vibeverse.server.controller;
 
-import com.vibeverse.server.dto.request.VibeBoardRequestDto;
-import com.vibeverse.server.dto.request.ViberRequestDto;
-import com.vibeverse.server.dto.response.VibeBoardResponseDto;
-import com.vibeverse.server.dto.response.ViberResponseDto;
+import com.vibeverse.server.dto.request.*;
+import com.vibeverse.server.dto.response.*;
+import com.vibeverse.server.model.enums.MediaType;
+import com.vibeverse.server.model.enums.RequestStatus;
 import com.vibeverse.server.service.ViberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -132,4 +132,155 @@ public class ViberController {
     ) {
         return viberService.updateBoardAuraPoints(viberId, boardId, points);
     }
+
+
+
+    // Add these to your existing ViberController
+    @GetMapping("/{viberId}/badges")
+    public List<ViberBadgeResponseDto> getViberBadges(@PathVariable UUID viberId) {
+        return viberService.getViberBadges(viberId);
+    }
+
+    @GetMapping("/{viberId}/badges/{badgeAssignmentId}")
+    public ViberBadgeResponseDto getViberBadge(
+            @PathVariable UUID viberId,
+            @PathVariable UUID badgeAssignmentId
+    ) {
+        return viberService.getViberBadge(viberId, badgeAssignmentId);
+    }
+
+    @PostMapping("/{viberId}/badges")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ViberBadgeResponseDto awardBadge(
+            @PathVariable UUID viberId,
+            @Valid @RequestBody ViberBadgeRequestDto dto
+    ) {
+        return viberService.awardBadgeToViber(viberId, dto);
+    }
+
+    @DeleteMapping("/{viberId}/badges/{badgeAssignmentId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void removeBadge(
+            @PathVariable UUID viberId,
+            @PathVariable UUID badgeAssignmentId
+    ) {
+        viberService.removeBadgeFromViber(viberId, badgeAssignmentId);
+    }
+
+    @GetMapping("/{viberId}/has-badge/{badgeId}")
+    public boolean checkHasBadge(
+            @PathVariable UUID viberId,
+            @PathVariable UUID badgeId
+    ) {
+        return viberService.hasBadge(viberId, badgeId);
+    }
+
+    @GetMapping("/{viberId}/badge-count")
+    public int getBadgeCount(@PathVariable UUID viberId) {
+        return viberService.getViberBadgeCount(viberId);
+    }
+
+
+    /* ========== VIBE REQUEST ENDPOINTS ========== */
+
+    @PostMapping("/requests")
+    @ResponseStatus(HttpStatus.CREATED)
+    public VibeRequestResponseDto sendVibeRequest(@Valid @RequestBody VibeRequestRequestDto dto) {
+        return viberService.createVibeRequest(dto);
+    }
+
+    @GetMapping("/requests/sent/{viberId}")
+    public List<VibeRequestResponseDto> getSentRequests(@PathVariable UUID viberId) {
+        return viberService.getSentRequests(viberId);
+    }
+
+    @GetMapping("/requests/received/{viberId}")
+    public List<VibeRequestResponseDto> getReceivedRequests(@PathVariable UUID viberId) {
+        return viberService.getReceivedRequests(viberId);
+    }
+
+    @GetMapping("/requests/{requestId}")
+    public VibeRequestResponseDto getRequestById(@PathVariable UUID requestId) {
+        return viberService.getVibeRequestById(requestId);
+    }
+
+    @PutMapping("/requests/{requestId}")
+    public VibeRequestResponseDto updateRequest(
+            @PathVariable UUID requestId,
+            @Valid @RequestBody VibeRequestRequestDto dto
+    ) {
+        return viberService.updateVibeRequest(requestId, dto);
+    }
+
+    @DeleteMapping("/requests/{requestId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteRequest(@PathVariable UUID requestId) {
+        viberService.deleteVibeRequest(requestId);
+    }
+
+    @GetMapping("/requests/status")
+    public List<VibeRequestResponseDto> getRequestsByStatus(
+            @RequestParam UUID viberId,
+            @RequestParam RequestStatus status
+    ) {
+        return viberService.getRequestsByStatus(viberId, status);
+    }
+
+    @GetMapping("/requests/exists")
+    public boolean checkRequestExists(
+            @RequestParam UUID senderId,
+            @RequestParam UUID receiverId
+    ) {
+        return viberService.requestExists(senderId, receiverId);
+    }
+
+
+
+    /* ========== VIBER MEDIA ENDPOINTS ========== */
+
+    @PostMapping("/media")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ViberMediaResponseDto createViberMedia(@Valid @RequestBody ViberMediaRequestDto dto) {
+        return viberService.createViberMedia(dto);
+    }
+
+    @GetMapping("/media/{viberMediaId}")
+    public ViberMediaResponseDto getViberMedia(@PathVariable UUID viberMediaId) {
+        return viberService.getViberMediaById(viberMediaId);
+    }
+
+    @GetMapping("/vibers/{viberId}/media")
+    public List<ViberMediaResponseDto> getMediaByViber(@PathVariable UUID viberId) {
+        return viberService.getMediaByViberId(viberId);
+    }
+
+    @GetMapping("/media/{mediaId}/vibers")
+    public List<ViberMediaResponseDto> getVibersByMedia(@PathVariable UUID mediaId) {
+        return viberService.getVibersByMediaId(mediaId);
+    }
+
+    @PutMapping("/media/{viberMediaId}")
+    public ViberMediaResponseDto updateViberMedia(
+            @PathVariable UUID viberMediaId,
+            @Valid @RequestBody ViberMediaRequestDto dto
+    ) {
+        return viberService.updateViberMedia(viberMediaId, dto);
+    }
+
+    @DeleteMapping("/media/{viberMediaId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteViberMedia(@PathVariable UUID viberMediaId) {
+        viberService.deleteViberMedia(viberMediaId);
+    }
+
+    @GetMapping("/media/search")
+    public List<ViberMediaResponseDto> searchViberMedia(
+            @RequestParam(required = false) UUID viberId,
+            @RequestParam(required = false) UUID mediaId,
+            @RequestParam(required = false) MediaType type,
+            @RequestParam(required = false) Integer minRating
+    ) {
+        return viberService.searchViberMedia(viberId, mediaId, type, minRating);
+    }
+
 }

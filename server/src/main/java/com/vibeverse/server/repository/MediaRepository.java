@@ -21,8 +21,8 @@ public interface MediaRepository extends JpaRepository<Media, UUID> {
     @Query("SELECT m FROM Media m WHERE m.imageUrl IS NOT NULL")
     List<Media> findByImageUrlIsNotNull();
 
-    @Query("SELECT m FROM Media m WHERE :tag MEMBER OF m.tags")
-    List<Media> findByTag(@Param("tag") String tag);
+//    @Query("SELECT m FROM Media m WHERE :tag MEMBER OF m.tags")
+//    List<Media> findByTag(@Param("tag") String tag);
 
     @Query(value = """
         SELECT * FROM media 

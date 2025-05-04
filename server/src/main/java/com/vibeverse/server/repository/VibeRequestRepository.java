@@ -15,4 +15,27 @@ import java.util.UUID;
 @Repository
 public interface VibeRequestRepository extends JpaRepository<VibeRequest, UUID> {
 
+    // Find all requests sent by a specific viber
+    List<VibeRequest> findBySender_Id(UUID senderId);
+
+    // Find all requests received by a specific viber
+    List<VibeRequest> findByReceiver_Id(UUID receiverId);
+
+    // Find all requests between two specific vibers (in both directions)
+    List<VibeRequest> findBySender_IdOrReceiver_Id(UUID viberId1, UUID viberId2);
+
+    // Check if a request exists between two specific vibers (sender → receiver)
+    boolean existsBySender_IdAndReceiver_Id(UUID senderId, UUID receiverId);
+
+    // Find requests by receiver and status (for filtering pending/accepted/rejected)
+    List<VibeRequest> findByReceiver_IdAndStatus(UUID receiverId, RequestStatus status);
+
+    // Find a specific request between two vibers
+    List<VibeRequest> findBySender_IdAndReceiver_Id(UUID senderId, UUID receiverId);
+
+    // Find requests by status only
+    List<VibeRequest> findByStatus(RequestStatus status);
+
+    // Count pending requests for a receiver
+    long countByReceiver_IdAndStatus(UUID receiverId, RequestStatus status);
 }

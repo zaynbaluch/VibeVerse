@@ -4,12 +4,14 @@ import com.vibeverse.server.dto.request.ViberRequestDto;
 import com.vibeverse.server.dto.response.ViberResponseDto;
 import com.vibeverse.server.exception.ResourceNotFoundException;
 import com.vibeverse.server.model.Viber;
+import com.vibeverse.server.model.enums.RequestStatus;
 import com.vibeverse.server.repository.ViberRepository;
 import com.vibeverse.server.dto.mapper.ViberMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.vibeverse.server.model.enums.MediaType;
 
 //package com.vibeverse.server.service;
 
@@ -215,5 +217,261 @@ public class ViberService {
 
         board.setAuraPoints(board.getAuraPoints() + points);
         return vibeBoardMapper.toResponseDto(vibeBoardRepository.save(board));
+    }
+
+
+    private final ViberBadgeRepository viberBadgeRepository;
+    private final ViberBadgeMapper viberBadgeMapper;
+
+    // Add these to your existing ViberService class
+    @Transactional(readOnly = true)
+    public List<ViberBadgeResponseDto> getViberBadges(UUID viberId) {
+        if (!viberRepository.existsById(viberId)) {
+            throw new ResourceNotFoundException("Viber not found");
+        }
+        return viberBadgeRepository.findByViber_Id(viberId).stream()
+                .map(viberBadgeMapper::toResponseDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public ViberBadgeResponseDto getViberBadge(UUID viberId, UUID badgeAssignmentId) {
+        return viberBadgeMapper.toResponseDto(
+                viberBadgeRepository.findByIdAndViber_Id(badgeAssignmentId, viberId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Badge assignment not found"))
+        );
+    }
+
+    @Transactional
+    public ViberBadgeResponseDto awardBadgeToViber(UUID viberId, ViberBadgeRequestDto dto) {
+        // Verify the viber matches the path
+        if (!viberId.equals(dto.getViberId())) {
+            throw new IllegalArgumentException("Viber ID mismatch");
+        }
+
+        // Check if badge is already awarded
+        if (viberBadgeRepository.existsByViber_IdAndBadge_Id(viberId, dto.getBadgeId())) {
+            throw new IllegalArgumentException("Viber already has this badge");
+        }
+
+        ViberBadge assignment = viberBadgeMapper.toEntity(dto);
+        return viberBadgeMapper.toResponseDto(viberBadgeRepository.save(assignment));
+    }
+
+    @Transactional
+    public void removeBadgeFromViber(UUID viberId, UUID badgeAssignmentId) {
+        if (!viberBadgeRepository.existsByIdAndViber_Id(badgeAssignmentId, viberId)) {
+            throw new ResourceNotFoundException("Badge assignment not found");
+        }
+        viberBadgeRepository.deleteById(badgeAssignmentId);
+    }
+
+    @Transactional(readOnly = true)
+    public boolean hasBadge(UUID viberId, UUID badgeId) {
+        return viberBadgeRepository.existsByViber_IdAndBadge_Id(viberId, badgeId);
+    }
+
+    @Transactional(readOnly = true)
+    public int getViberBadgeCount(UUID viberId) {
+        return viberBadgeRepository.countByViber_Id(viberId);
+    }
+
+
+    // Add this dependency to the service
+    private final VibeRequestRepository vibeRequestRepository;
+    private final VibeRequestMapper vibeRequestMapper;
+
+    /* ========== VIBE REQUEST OPERATIONS ========== */
+
+    @Transactional
+    public VibeRequestResponseDto createVibeRequest(VibeRequestRequestDto dto) {
+        // Check if request already exists
+        if (vibeRequestRepository.existsBySender_IdAndReceiver_Id(dto.getSenderId(), dto.getReceiverId())) {
+            throw new IllegalArgumentException("Request already exists between these users");
+        }
+
+        // Prevent self-requests
+        if (dto.getSenderId().equals(dto.getReceiverId())) {
+            throw new IllegalArgumentException("Cannot send request to yourself");
+        }
+
+        VibeRequest request = vibeRequestMapper.toEntity(dto);
+        return vibeRequestMapper.toResponseDto(vibeRequestRepository.save(request));
+    }
+
+    @Transactional(readOnly = true)
+    public List<VibeRequestResponseDto> getSentRequests(UUID viberId) {
+        return vibeRequestRepository.findBySender_Id(viberId).stream()
+                .map(vibeRequestMapper::toResponseDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<VibeRequestResponseDto> getReceivedRequests(UUID viberId) {
+        return vibeRequestRepository.findByReceiver_Id(viberId).stream()
+                .map(vibeRequestMapper::toResponseDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public VibeRequestResponseDto getVibeRequestById(UUID requestId) {
+        return vibeRequestMapper.toResponseDto(
+                vibeRequestRepository.findById(requestId)
+                        .orElseThrow(() -> new ResourceNotFoundException("Request not found"))
+        );
+    }
+
+    @Transactional
+    public VibeRequestResponseDto updateVibeRequest(UUID requestId, VibeRequestRequestDto dto) {
+        VibeRequest request = vibeRequestRepository.findById(requestId)
+                .orElseThrow(() -> new ResourceNotFoundException("Request not found"));
+
+        // Only allow updating status and message
+        if (dto.getSenderId() != null && !dto.getSenderId().equals(request.getSender().getId())) {
+            throw new IllegalArgumentException("Cannot change request sender");
+        }
+
+        if (dto.getReceiverId() != null && !dto.getReceiverId().equals(request.getReceiver().getId())) {
+            throw new IllegalArgumentException("Cannot change request receiver");
+        }
+
+        vibeRequestMapper.updateEntityFromDto(dto, request);
+        return vibeRequestMapper.toResponseDto(vibeRequestRepository.save(request));
+    }
+
+    @Transactional
+    public void deleteVibeRequest(UUID requestId) {
+        if (!vibeRequestRepository.existsById(requestId)) {
+            throw new ResourceNotFoundException("Request not found");
+        }
+        vibeRequestRepository.deleteById(requestId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<VibeRequestResponseDto> getRequestsByStatus(UUID viberId, RequestStatus status) {
+        return vibeRequestRepository.findByReceiver_IdAndStatus(viberId, status).stream()
+                .map(vibeRequestMapper::toResponseDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public boolean requestExists(UUID senderId, UUID receiverId) {
+        return vibeRequestRepository.existsBySender_IdAndReceiver_Id(senderId, receiverId);
+    }
+
+
+    // Add these dependencies to the service
+    private final ViberMediaRepository viberMediaRepository;
+//    private final MediaRepository mediaRepository;
+    private final com.vibeverse.server.mapper.ViberMediaMapper viberMediaMapper;
+
+    /* ========== VIBER MEDIA OPERATIONS ========== */
+
+    @Transactional
+    public ViberMediaResponseDto createViberMedia(ViberMediaRequestDto dto) {
+        Viber viber = viberRepository.findById(dto.getViberId())
+                .orElseThrow(() -> new ResourceNotFoundException("Viber not found"));
+
+        Media media = mediaRepository.findById(dto.getMediaId())
+                .orElseThrow(() -> new ResourceNotFoundException("Media not found"));
+
+        // Check if this viber-media relationship already exists
+        if (viberMediaRepository.existsByViberAndMedia(viber, media)) {
+            throw new IllegalArgumentException("This viber already has a relationship with this media");
+        }
+
+        ViberMedia viberMedia = viberMediaMapper.toEntity(dto, viber, media);
+        return viberMediaMapper.toResponseDto(viberMediaRepository.save(viberMedia));
+    }
+
+    @Transactional(readOnly = true)
+    public ViberMediaResponseDto getViberMediaById(UUID viberMediaId) {
+        return viberMediaMapper.toResponseDto(
+                viberMediaRepository.findById(viberMediaId)
+                        .orElseThrow(() -> new ResourceNotFoundException("ViberMedia not found"))
+        );
+    }
+
+    @Transactional(readOnly = true)
+    public List<ViberMediaResponseDto> getMediaByViberId(UUID viberId) {
+        return viberMediaRepository.findByViber_Id(viberId).stream()
+                .map(viberMediaMapper::toResponseDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ViberMediaResponseDto> getVibersByMediaId(UUID mediaId) {
+        return viberMediaRepository.findByMedia_MediaId(mediaId).stream()
+                .map(viberMediaMapper::toResponseDto)
+                .toList();
+    }
+
+    @Transactional
+    public ViberMediaResponseDto updateViberMedia(UUID viberMediaId, ViberMediaRequestDto dto) {
+        ViberMedia viberMedia = viberMediaRepository.findById(viberMediaId)
+                .orElseThrow(() -> new ResourceNotFoundException("ViberMedia not found"));
+
+        // Only update allowed fields (not viber or media references)
+        if (dto.getType() != null) {
+            viberMedia.setType(dto.getType());
+        }
+        if (dto.getRating() != null) {
+            viberMedia.setRating(dto.getRating());
+        }
+        if (dto.getReview() != null) {
+            viberMedia.setReview(dto.getReview());
+        }
+        if (dto.getProgress() != null) {
+            viberMedia.setProgress(dto.getProgress());
+        }
+
+        return viberMediaMapper.toResponseDto(viberMediaRepository.save(viberMedia));
+    }
+
+    @Transactional
+    public void deleteViberMedia(UUID viberMediaId) {
+        if (!viberMediaRepository.existsById(viberMediaId)) {
+            throw new ResourceNotFoundException("ViberMedia not found");
+        }
+        viberMediaRepository.deleteById(viberMediaId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<ViberMediaResponseDto> searchViberMedia(
+            UUID viberId,
+            UUID mediaId,
+            MediaType type,
+            Integer minRating
+    ) {
+        // Build dynamic query based on provided parameters
+        if (viberId != null && mediaId != null) {
+            return viberMediaRepository.findByViber_IdAndMedia_MediaId(viberId, mediaId).stream()
+                    .map(viberMediaMapper::toResponseDto)
+                    .toList();
+        } else if (viberId != null) {
+            return viberMediaRepository.findByViber_Id(viberId).stream()
+                    .map(viberMediaMapper::toResponseDto)
+                    .toList();
+        } else if (mediaId != null) {
+            return viberMediaRepository.findByMedia_MediaId(mediaId).stream()
+                    .map(viberMediaMapper::toResponseDto)
+                    .toList();
+        } else if (type != null && minRating != null) {
+            return viberMediaRepository.findByTypeAndRatingGreaterThanEqual(type, minRating).stream()
+                    .map(viberMediaMapper::toResponseDto)
+                    .toList();
+        } else if (type != null) {
+            return viberMediaRepository.findByType(type).stream()
+                    .map(viberMediaMapper::toResponseDto)
+                    .toList();
+        } else if (minRating != null) {
+            return viberMediaRepository.findByRatingGreaterThanEqual(minRating).stream()
+                    .map(viberMediaMapper::toResponseDto)
+                    .toList();
+        } else {
+            return viberMediaRepository.findAll().stream()
+                    .map(viberMediaMapper::toResponseDto)
+                    .toList();
+        }
     }
 }
