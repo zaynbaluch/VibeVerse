@@ -10,12 +10,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BadgeResponseDto {
+public class ViberBadgeResponseDto {
 
+    private UUID viberBadgeId;
+    private LocalDateTime awardedAt;
+    private UUID viberId;
     private UUID badgeId;
-    private String name;
-    private String description;
-    private String iconUrl;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

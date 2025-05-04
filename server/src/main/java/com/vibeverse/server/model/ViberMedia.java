@@ -1,5 +1,6 @@
 package com.vibeverse.server.model;
 
+import com.vibeverse.server.model.enums.MediaType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -10,15 +11,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
-
-enum MediaType {
-    BOOK,
-    MOVIE,
-    GAME,
-    SERIES,
-    ANIME
-}
 
 @Entity
 @Table(name = "viber_media")

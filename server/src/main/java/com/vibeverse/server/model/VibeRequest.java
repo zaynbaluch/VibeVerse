@@ -1,5 +1,6 @@
 package com.vibeverse.server.model;
 
+import com.vibeverse.server.model.enums.RequestStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -8,12 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-enum RequestStatus {
-    PENDING,
-    ACCEPTED,
-    REJECTED,
-    CANCELLED
-}
+
 
 @Entity
 @Table(name = "vibe_requests")

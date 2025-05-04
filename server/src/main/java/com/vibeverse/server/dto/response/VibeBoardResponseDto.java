@@ -3,6 +3,7 @@ package com.vibeverse.server.dto.response;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -10,12 +11,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BadgeResponseDto {
+public class VibeBoardResponseDto {
 
-    private UUID badgeId;
+    private UUID vboardId;
     private String name;
+    private Integer auraPoints;
     private String description;
-    private String iconUrl;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+
+    private List<UUID> mediaItemIds;
+    private UUID viberId;
 }
