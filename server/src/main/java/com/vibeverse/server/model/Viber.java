@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
-@Table
+@Table(name = "viber")
 @Getter
 @Setter
 @NoArgsConstructor
