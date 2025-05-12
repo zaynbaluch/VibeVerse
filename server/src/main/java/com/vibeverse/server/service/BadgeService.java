@@ -1,61 +1,96 @@
 package com.vibeverse.server.service;
 
-import com.vibeverse.server.dto.request.BadgeRequestDto;
-import com.vibeverse.server.dto.response.BadgeResponseDto;
+import com.vibeverse.server.dto.BadgeDto;
+import com.vibeverse.server.dto.ViberBadgeDto;
+import com.vibeverse.server.entity.Badge;
+import com.vibeverse.server.entity.Viber;
+import com.vibeverse.server.entity.ViberBadge;
+import com.vibeverse.server.exception.BadRequestException;
 import com.vibeverse.server.exception.ResourceNotFoundException;
-import com.vibeverse.server.model.Badge;
+import com.vibeverse.server.mapper.BadgeMapper;
+import com.vibeverse.server.mapper.ViberBadgeMapper;
 import com.vibeverse.server.repository.BadgeRepository;
-import com.vibeverse.server.dto.mapper.BadgeMapper;
+import com.vibeverse.server.repository.ViberBadgeRepository;
+import com.vibeverse.server.repository.ViberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class BadgeService {
 
     private final BadgeRepository badgeRepository;
+    private final ViberBadgeRepository viberBadgeRepository;
+    private final ViberRepository viberRepository;
     private final BadgeMapper badgeMapper;
-
-    public BadgeResponseDto createBadge(BadgeRequestDto dto) {
-        if (badgeRepository.existsByName(dto.getName())) {
-            throw new IllegalArgumentException("Badge name already exists");
-        }
-        Badge badge = badgeMapper.toEntity(dto);
-        return badgeMapper.toResponseDto(badgeRepository.save(badge));
-    }
-
+    private final ViberBadgeMapper viberBadgeMapper;
+    
     @Transactional(readOnly = true)
-    public BadgeResponseDto getBadgeById(UUID id) {
-        Badge badge = badgeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Badge not found with id: " + id));
-        return badgeMapper.toResponseDto(badge);
+    public List<BadgeDto> getAllBadges() {
+        List<Badge> badges = badgeRepository.findAll();
+        return badgeMapper.toDtoList(badges);
     }
-
+    
     @Transactional(readOnly = true)
-    public List<BadgeResponseDto> getAllBadges() {
-        return badgeRepository.findAll().stream()
-                .map(badgeMapper::toResponseDto)
-                .collect(Collectors.toList());
-    }
-
-    public BadgeResponseDto updateBadge(UUID id, BadgeRequestDto dto) {
+    public BadgeDto getBadgeById(Long id) {
         Badge badge = badgeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Badge not found with id: " + id));
-
-        badgeMapper.updateEntityFromDto(dto, badge);
-        return badgeMapper.toResponseDto(badgeRepository.save(badge));
+                .orElseThrow(() -> new ResourceNotFoundException("Badge", "id", id));
+        
+        return badgeMapper.toDto(badge);
     }
-
-    public void deleteBadge(UUID id) {
-        if (!badgeRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Badge not found with id: " + id);
+    
+    @Transactional(readOnly = true)
+    public List<ViberBadgeDto> getViberBadges(Long viberId) {
+        List<ViberBadge> viberBadges = viberBadgeRepository.findByViberId(viberId);
+        return viberBadgeMapper.toDtoList(viberBadges);
+    }
+    
+    @Transactional
+    public BadgeDto createBadge(BadgeDto badgeDto) {
+        // Check if badge with same name already exists
+        Optional<Badge> existingBadge = badgeRepository.findByName(badgeDto.getName());
+        if (existingBadge.isPresent()) {
+            throw new BadRequestException("Badge with name '" + badgeDto.getName() + "' already exists");
         }
-        badgeRepository.deleteById(id);
+        
+        Badge badge = badgeMapper.toEntity(badgeDto);
+        badgeRepository.save(badge);
+        
+        return badgeMapper.toDto(badge);
+    }
+    
+    @Transactional
+    public ViberBadgeDto awardBadge(Long viberId, Long badgeId) {
+        Viber viber = viberRepository.findById(viberId)
+                .orElseThrow(() -> new ResourceNotFoundException("Viber", "id", viberId));
+        
+        Badge badge = badgeRepository.findById(badgeId)
+                .orElseThrow(() -> new ResourceNotFoundException("Badge", "id", badgeId));
+        
+        // Check if viber already has this badge
+        Optional<ViberBadge> existingViberBadge = viberBadgeRepository.findByViberIdAndBadgeId(viberId, badgeId);
+        if (existingViberBadge.isPresent()) {
+            throw new BadRequestException("Viber already has this badge");
+        }
+        
+        ViberBadge viberBadge = new ViberBadge();
+        viberBadge.setViber(viber);
+        viberBadge.setBadge(badge);
+        
+        viberBadgeRepository.save(viberBadge);
+        
+        return viberBadgeMapper.toDto(viberBadge);
+    }
+    
+    @Transactional
+    public void revokeBadge(Long viberId, Long badgeId) {
+        ViberBadge viberBadge = viberBadgeRepository.findByViberIdAndBadgeId(viberId, badgeId)
+                .orElseThrow(() -> new ResourceNotFoundException("ViberBadge", "viberId and badgeId", viberId + ", " + badgeId));
+        
+        viberBadgeRepository.delete(viberBadge);
     }
 }
