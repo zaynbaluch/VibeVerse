@@ -640,3 +640,1226 @@ This generated password is for development use only. Your security configuration
 2025-05-13T19:50:52.382+05:00  INFO 20620 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2025-05-13T19:50:52.387+05:00  INFO 20620 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
 2025-05-13T20:25:35.834+05:00  WARN 20620 --- [server] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m38s193ms169µs700ns).
+2025-05-13T20:40:09.965+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20620 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T20:40:09.966+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T20:40:10.570+05:00  WARN 20620 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.vibeverse.server.mapper.AnimeMapperImpl]
+2025-05-13T20:40:10.592+05:00 ERROR 20620 --- [server] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.vibeverse.server.mapper.AnimeMapperImpl]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:286) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:218) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:354) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:281) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:204) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:172) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:418) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351) ~[spring-boot-3.4.5.jar:3.4.5]
+	at com.vibeverse.server.ServerApplication.main(ServerApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.5.jar:3.4.5]
+Caused by: java.io.FileNotFoundException: class path resource [com/vibeverse/server/mapper/AnimeMapper.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:215) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:54) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:98) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:85) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:75) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:711) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getInterfaces(ConfigurationClassParser.java:1060) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.processInterfaces(ConfigurationClassParser.java:441) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:385) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:281) ~[spring-context-6.2.6.jar:6.2.6]
+	... 21 common frames omitted
+
+2025-05-13T20:40:13.987+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20620 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T20:40:13.988+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T20:40:14.115+05:00  WARN 20620 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.vibeverse.server.mapper.AnimeMapperImpl]
+2025-05-13T20:40:14.124+05:00 ERROR 20620 --- [server] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [com.vibeverse.server.mapper.AnimeMapperImpl]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:286) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:218) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:354) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:281) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:204) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:172) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:418) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:791) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:609) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351) ~[spring-boot-3.4.5.jar:3.4.5]
+	at com.vibeverse.server.ServerApplication.main(ServerApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.5.jar:3.4.5]
+Caused by: java.io.FileNotFoundException: class path resource [com/vibeverse/server/mapper/AnimeMapper.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:215) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:54) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:98) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:85) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:75) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:711) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getInterfaces(ConfigurationClassParser.java:1060) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.processInterfaces(ConfigurationClassParser.java:441) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:385) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:281) ~[spring-context-6.2.6.jar:6.2.6]
+	... 21 common frames omitted
+
+2025-05-13T20:40:24.688+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20620 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T20:40:24.688+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T20:40:25.682+05:00  INFO 20620 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T20:40:25.811+05:00  INFO 20620 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 124 ms. Found 7 JPA repository interfaces.
+2025-05-13T20:40:26.780+05:00  INFO 20620 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T20:40:26.783+05:00  INFO 20620 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T20:40:26.783+05:00  INFO 20620 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T20:40:26.854+05:00  INFO 20620 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-11].[localhost].[/]    : Initializing Spring embedded WebApplicationContext
+2025-05-13T20:40:26.854+05:00  INFO 20620 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2158 ms
+2025-05-13T20:40:27.065+05:00  INFO 20620 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T20:40:27.074+05:00  INFO 20620 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T20:40:27.145+05:00  INFO 20620 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T20:40:27.150+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-05-13T20:40:27.544+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@2658740d
+2025-05-13T20:40:27.545+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-05-13T20:40:27.574+05:00  INFO 20620 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T20:40:31.047+05:00  INFO 20620 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T20:40:32.893+05:00  INFO 20620 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T20:40:34.571+05:00  WARN 20620 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'animeMapperImpl': Lookup method resolution failed
+2025-05-13T20:40:34.572+05:00  INFO 20620 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T20:40:34.573+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-05-13T20:40:34.587+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-05-13T20:40:34.588+05:00  INFO 20620 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-05-13T20:40:34.600+05:00  INFO 20620 --- [server] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-13T20:40:34.607+05:00 ERROR 20620 --- [server] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'animeMapperImpl': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1326) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1221) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1187) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351) ~[spring-boot-3.4.5.jar:3.4.5]
+	at com.vibeverse.server.ServerApplication.main(ServerApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.5.jar:3.4.5]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.vibeverse.server.mapper.AnimeMapperImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@66932458]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.6.jar:6.2.6]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: AnimeDto
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3650) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2735) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.6.jar:6.2.6]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: AnimeDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:528) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:578) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:557) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.4.5.jar:3.4.5]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:528) ~[na:na]
+	... 30 common frames omitted
+
+2025-05-13T20:40:47.500+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20620 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T20:40:47.500+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T20:40:48.087+05:00  INFO 20620 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T20:40:48.189+05:00  INFO 20620 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 95 ms. Found 7 JPA repository interfaces.
+2025-05-13T20:40:48.601+05:00  INFO 20620 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T20:40:48.601+05:00  INFO 20620 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T20:40:48.601+05:00  INFO 20620 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T20:40:48.644+05:00  INFO 20620 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-13].[localhost].[/]    : Initializing Spring embedded WebApplicationContext
+2025-05-13T20:40:48.644+05:00  INFO 20620 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1144 ms
+2025-05-13T20:40:48.721+05:00  INFO 20620 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T20:40:48.721+05:00  INFO 20620 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T20:40:48.741+05:00  INFO 20620 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T20:40:48.742+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-05-13T20:40:49.137+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@257d2dd7
+2025-05-13T20:40:49.139+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-05-13T20:40:49.172+05:00  INFO 20620 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T20:40:49.635+05:00  INFO 20620 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T20:40:51.030+05:00  INFO 20620 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T20:40:51.526+05:00  WARN 20620 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'animeMapperImpl': Lookup method resolution failed
+2025-05-13T20:40:51.526+05:00  INFO 20620 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T20:40:51.526+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-05-13T20:40:51.537+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-05-13T20:40:51.543+05:00  INFO 20620 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-05-13T20:40:51.558+05:00  INFO 20620 --- [server] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-13T20:40:51.566+05:00 ERROR 20620 --- [server] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'animeMapperImpl': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1326) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1221) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1221) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1187) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1122) ~[spring-beans-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.6.jar:6.2.6]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362) ~[spring-boot-3.4.5.jar:3.4.5]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351) ~[spring-boot-3.4.5.jar:3.4.5]
+	at com.vibeverse.server.ServerApplication.main(ServerApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.4.5.jar:3.4.5]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.vibeverse.server.mapper.AnimeMapperImpl] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@9d492ef]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.6.jar:6.2.6]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.6.jar:6.2.6]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: AnimeDto
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3650) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2735) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.6.jar:6.2.6]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: AnimeDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:528) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:578) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:557) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.4.5.jar:3.4.5]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:528) ~[na:na]
+	... 30 common frames omitted
+
+2025-05-13T20:50:03.995+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20620 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T20:50:03.996+05:00  INFO 20620 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T20:50:05.965+05:00  INFO 20620 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T20:50:06.208+05:00  INFO 20620 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 237 ms. Found 7 JPA repository interfaces.
+2025-05-13T20:50:07.651+05:00  INFO 20620 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T20:50:07.666+05:00  INFO 20620 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T20:50:07.669+05:00  INFO 20620 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T20:50:07.796+05:00  INFO 20620 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-14].[localhost].[/]    : Initializing Spring embedded WebApplicationContext
+2025-05-13T20:50:07.798+05:00  INFO 20620 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3779 ms
+2025-05-13T20:50:08.232+05:00  INFO 20620 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T20:50:08.281+05:00  INFO 20620 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T20:50:08.391+05:00  INFO 20620 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T20:50:08.394+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-05-13T20:50:08.697+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@4ffa3973
+2025-05-13T20:50:08.698+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-05-13T20:50:08.735+05:00  INFO 20620 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T20:50:10.297+05:00  INFO 20620 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T20:50:12.766+05:00  INFO 20620 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T20:50:13.867+05:00  WARN 20620 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'animeMapperImpl': Lookup method resolution failed
+2025-05-13T20:50:13.869+05:00  INFO 20620 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T20:50:13.871+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-05-13T20:50:13.877+05:00  INFO 20620 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-05-13T20:50:56.691+05:00  INFO 6800 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 6800 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T20:50:56.698+05:00  INFO 6800 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T20:50:56.891+05:00  INFO 6800 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T20:50:56.891+05:00  INFO 6800 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T20:50:58.723+05:00  INFO 6800 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T20:50:58.913+05:00  INFO 6800 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 169 ms. Found 7 JPA repository interfaces.
+2025-05-13T20:51:00.869+05:00  INFO 6800 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T20:51:00.932+05:00  INFO 6800 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T20:51:00.934+05:00  INFO 6800 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T20:51:01.304+05:00  INFO 6800 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T20:51:01.307+05:00  INFO 6800 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4415 ms
+2025-05-13T20:51:01.886+05:00  INFO 6800 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T20:51:02.093+05:00  INFO 6800 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T20:51:02.220+05:00  INFO 6800 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T20:51:03.189+05:00  INFO 6800 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T20:51:03.322+05:00  INFO 6800 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T20:51:03.888+05:00  INFO 6800 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4def099d
+2025-05-13T20:51:03.893+05:00  INFO 6800 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T20:51:04.067+05:00  INFO 6800 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T20:51:08.929+05:00  INFO 6800 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T20:51:11.266+05:00  INFO 6800 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T20:51:12.836+05:00  INFO 6800 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T20:51:17.109+05:00  WARN 6800 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 09e4895f-20cf-40fe-8844-556f66bd4655
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T20:51:17.141+05:00  INFO 6800 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T20:51:18.835+05:00  INFO 6800 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T20:51:18.948+05:00  INFO 6800 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T20:51:18.969+05:00  INFO 6800 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 23.669 seconds (process running for 25.899)
+2025-05-13T20:51:35.004+05:00  INFO 6800 --- [server] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13T20:51:35.006+05:00  INFO 6800 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-13T20:51:35.009+05:00  INFO 6800 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-05-13T21:17:11.895+05:00  INFO 6800 --- [server] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T21:17:11.926+05:00  INFO 6800 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T21:17:11.944+05:00  INFO 6800 --- [server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T21:17:11.958+05:00  INFO 6800 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T21:17:11.972+05:00  INFO 6800 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T21:17:31.299+05:00  INFO 14148 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 14148 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T21:17:31.304+05:00  INFO 14148 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T21:17:31.473+05:00  INFO 14148 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T21:17:31.475+05:00  INFO 14148 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T21:17:33.400+05:00  INFO 14148 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T21:17:33.665+05:00  INFO 14148 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 241 ms. Found 7 JPA repository interfaces.
+2025-05-13T21:17:35.576+05:00  INFO 14148 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T21:17:35.633+05:00  INFO 14148 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T21:17:35.635+05:00  INFO 14148 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T21:17:35.781+05:00  INFO 14148 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T21:17:35.781+05:00  INFO 14148 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4304 ms
+2025-05-13T21:17:36.235+05:00  INFO 14148 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T21:17:36.386+05:00  INFO 14148 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T21:17:36.483+05:00  INFO 14148 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T21:17:37.139+05:00  INFO 14148 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T21:17:37.241+05:00  INFO 14148 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T21:17:37.684+05:00  INFO 14148 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@167d2e7
+2025-05-13T21:17:37.690+05:00  INFO 14148 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T21:17:37.866+05:00  INFO 14148 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T21:17:41.032+05:00  INFO 14148 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T21:17:42.978+05:00  INFO 14148 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T21:17:44.417+05:00  INFO 14148 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T21:17:48.588+05:00  WARN 14148 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 5f279cb5-80a3-4249-af67-9e22a794c847
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T21:17:48.610+05:00  INFO 14148 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T21:17:50.162+05:00  INFO 14148 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T21:17:50.246+05:00  INFO 14148 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T21:17:50.271+05:00  INFO 14148 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 20.592 seconds (process running for 23.867)
+2025-05-13T21:18:58.925+05:00  INFO 14148 --- [server] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13T21:18:58.925+05:00  INFO 14148 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-13T21:18:58.928+05:00  INFO 14148 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-13T21:26:33.468+05:00  INFO 14148 --- [server] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T21:26:33.476+05:00  INFO 14148 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T21:26:33.481+05:00  INFO 14148 --- [server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T21:26:33.485+05:00  INFO 14148 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T21:26:33.495+05:00  INFO 14148 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T21:26:48.277+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 9052 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T21:26:48.282+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T21:26:48.437+05:00  INFO 9052 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T21:26:48.438+05:00  INFO 9052 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T21:26:50.159+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T21:26:50.511+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 318 ms. Found 7 JPA repository interfaces.
+2025-05-13T21:26:52.012+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T21:26:52.038+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T21:26:52.039+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T21:26:52.115+05:00  INFO 9052 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T21:26:52.116+05:00  INFO 9052 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3677 ms
+2025-05-13T21:26:52.407+05:00  INFO 9052 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T21:26:52.508+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T21:26:52.590+05:00  INFO 9052 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T21:26:53.101+05:00  INFO 9052 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T21:26:53.149+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T21:26:53.435+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@22488cfa
+2025-05-13T21:26:53.438+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T21:26:53.539+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T21:26:55.794+05:00  INFO 9052 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T21:26:56.755+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T21:26:57.382+05:00  INFO 9052 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T21:26:59.406+05:00  WARN 9052 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9e8deb5e-5efe-487b-b42e-48124595ef7c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T21:26:59.429+05:00  INFO 9052 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T21:27:00.509+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T21:27:00.619+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T21:27:00.641+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 13.439 seconds (process running for 15.65)
+2025-05-13T22:03:49.368+05:00  INFO 9052 --- [server] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-05-13T22:03:49.480+05:00  INFO 9052 --- [server] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T22:03:50.426+05:00  INFO 9052 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T22:03:50.487+05:00  INFO 9052 --- [server] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:03:50.513+05:00  INFO 9052 --- [server] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T22:03:50.800+05:00  INFO 9052 --- [server] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T22:03:51.342+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 9052 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:03:51.347+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:03:52.591+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:03:52.650+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:03:53.061+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:03:53.067+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:03:53.068+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:03:53.128+05:00  INFO 9052 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:03:53.129+05:00  INFO 9052 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1755 ms
+2025-05-13T22:03:53.307+05:00  INFO 9052 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:03:53.323+05:00  INFO 9052 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:03:53.375+05:00  INFO 9052 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:03:53.382+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-05-13T22:03:53.666+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@70498860
+2025-05-13T22:03:53.666+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-05-13T22:03:53.694+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:03:55.010+05:00  INFO 9052 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:03:56.575+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:03:57.315+05:00  WARN 9052 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 4bed52b3-87d7-47ed-bed7-0bfeab42333b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:03:57.319+05:00  INFO 9052 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:03:57.777+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T22:03:57.816+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T22:03:57.822+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 6.675 seconds (process running for 2232.832)
+2025-05-13T22:03:57.827+05:00  INFO 9052 --- [server] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-13T22:03:59.226+05:00  INFO 9052 --- [server] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-05-13T22:03:59.226+05:00  INFO 9052 --- [server] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T22:03:59.234+05:00  INFO 9052 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T22:03:59.244+05:00  INFO 9052 --- [server] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:03:59.244+05:00  INFO 9052 --- [server] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-05-13T22:03:59.251+05:00  INFO 9052 --- [server] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-05-13T22:03:59.413+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 9052 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:03:59.413+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:03:59.853+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:03:59.899+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:04:00.132+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:04:00.135+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:04:00.136+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:04:00.178+05:00  INFO 9052 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:04:00.179+05:00  INFO 9052 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 762 ms
+2025-05-13T22:04:00.263+05:00  INFO 9052 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:04:00.269+05:00  INFO 9052 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:04:00.288+05:00  INFO 9052 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:04:00.291+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-05-13T22:04:00.523+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@2df52bee
+2025-05-13T22:04:00.524+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-05-13T22:04:00.544+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:04:01.007+05:00  INFO 9052 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:04:02.385+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:04:02.690+05:00  WARN 9052 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'viberController' defined in file [D:\VibeVerse\server\target\classes\com\vibeverse\server\controller\ViberController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'viberService' defined in file [D:\VibeVerse\server\target\classes\com\vibeverse\server\service\ViberService.class]: Unsatisfied dependency expressed through constructor parameter 2: No qualifying bean of type 'org.springframework.security.crypto.password.PasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-05-13T22:04:02.690+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:04:02.692+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-05-13T22:04:02.840+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-05-13T22:04:02.840+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-05-13T22:04:02.853+05:00  INFO 9052 --- [server] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-13T22:04:02.897+05:00 ERROR 9052 --- [server] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of constructor in com.vibeverse.server.service.ViberService required a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' in your configuration.
+
+2025-05-13T22:04:04.428+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 9052 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:04:04.428+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:04:04.891+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:04:04.932+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:04:05.294+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:04:05.300+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:04:05.300+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:04:05.367+05:00  INFO 9052 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:04:05.367+05:00  INFO 9052 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 937 ms
+2025-05-13T22:04:05.487+05:00  INFO 9052 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:04:05.495+05:00  INFO 9052 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:04:05.517+05:00  INFO 9052 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:04:05.522+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-05-13T22:04:05.693+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@61d8d544
+2025-05-13T22:04:05.693+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-05-13T22:04:05.716+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:04:06.095+05:00  INFO 9052 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:04:07.371+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:04:07.652+05:00  WARN 9052 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7a85878a-e191-4c73-9008-d5bb66e47b12
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:04:07.653+05:00  INFO 9052 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:04:07.832+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T22:04:07.842+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T22:04:07.858+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 3.467 seconds (process running for 2242.869)
+2025-05-13T22:04:07.858+05:00  INFO 9052 --- [server] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-13T22:41:05.637+05:00  INFO 9052 --- [server] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13T22:41:05.790+05:00  INFO 9052 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-13T22:41:05.796+05:00  INFO 9052 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2025-05-13T22:41:07.133+05:00  WARN 9052 --- [server] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.vibeverse.server.exception.ResourceNotFoundException: Viber not found with username: libero31]
+2025-05-13T22:53:38.504+05:00  INFO 9052 --- [server] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-05-13T22:53:38.509+05:00  INFO 9052 --- [server] [Thread-11] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T22:53:38.521+05:00  INFO 9052 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T22:53:38.530+05:00  INFO 9052 --- [server] [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:53:38.536+05:00  INFO 9052 --- [server] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-05-13T22:53:38.554+05:00  INFO 9052 --- [server] [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-05-13T22:53:38.834+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 9052 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:53:38.834+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:53:39.483+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:53:39.529+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:53:39.932+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:53:39.942+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:53:39.944+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:53:40.008+05:00  INFO 9052 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:53:40.009+05:00  INFO 9052 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1170 ms
+2025-05-13T22:53:40.113+05:00  INFO 9052 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:53:40.118+05:00  INFO 9052 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:53:40.140+05:00  INFO 9052 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:53:40.143+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-05-13T22:53:40.306+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection org.postgresql.jdbc.PgConnection@5177e009
+2025-05-13T22:53:40.306+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-05-13T22:53:40.327+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:53:40.896+05:00  INFO 9052 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:53:42.447+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:53:43.055+05:00  WARN 9052 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'viberController' defined in file [D:\VibeVerse\server\target\classes\com\vibeverse\server\controller\ViberController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'viberService' defined in file [D:\VibeVerse\server\target\classes\com\vibeverse\server\service\ViberService.class]: Unsatisfied dependency expressed through constructor parameter 2: No qualifying bean of type 'org.springframework.security.crypto.password.PasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-05-13T22:53:43.056+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:53:43.057+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-05-13T22:53:43.064+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-05-13T22:53:43.066+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-05-13T22:53:43.092+05:00  INFO 9052 --- [server] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-13T22:53:43.112+05:00 ERROR 9052 --- [server] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of constructor in com.vibeverse.server.service.ViberService required a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' in your configuration.
+
+2025-05-13T22:53:47.765+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 9052 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:53:47.765+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:53:48.513+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:53:48.638+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:53:48.994+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:53:48.996+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:53:48.996+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:53:49.124+05:00  INFO 9052 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:53:49.124+05:00  INFO 9052 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1341 ms
+2025-05-13T22:53:49.375+05:00  INFO 9052 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:53:49.382+05:00  INFO 9052 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:53:49.434+05:00  INFO 9052 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:53:49.436+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-05-13T22:53:49.616+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection org.postgresql.jdbc.PgConnection@6a439c03
+2025-05-13T22:53:49.623+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2025-05-13T22:53:49.641+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:53:50.298+05:00  INFO 9052 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:53:51.742+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:53:52.719+05:00  WARN 9052 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6f62efdd-1f94-4870-ba26-f3d0642c2480
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:53:52.723+05:00  INFO 9052 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:53:53.639+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T22:53:53.694+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T22:53:53.704+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 5.996 seconds (process running for 5228.712)
+2025-05-13T22:53:53.708+05:00  INFO 9052 --- [server] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-13T22:53:56.835+05:00  INFO 15460 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 15460 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:53:56.841+05:00  INFO 15460 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:53:57.039+05:00  INFO 15460 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T22:53:57.040+05:00  INFO 15460 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T22:53:59.920+05:00  INFO 15460 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:54:00.113+05:00  INFO 15460 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 175 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:54:02.449+05:00  INFO 15460 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:54:02.525+05:00  INFO 15460 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:54:02.525+05:00  INFO 15460 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:54:02.733+05:00  INFO 15460 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:54:02.733+05:00  INFO 15460 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5692 ms
+2025-05-13T22:54:03.257+05:00  INFO 15460 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:54:03.412+05:00  INFO 15460 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T22:54:03.523+05:00  INFO 15460 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:54:04.295+05:00  INFO 15460 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:54:04.365+05:00  INFO 15460 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T22:54:05.121+05:00  INFO 15460 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1d612316
+2025-05-13T22:54:05.129+05:00  INFO 15460 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T22:54:05.378+05:00  INFO 15460 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:54:09.803+05:00  INFO 15460 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:54:11.060+05:00  INFO 15460 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:54:12.248+05:00  INFO 15460 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T22:54:15.818+05:00  WARN 15460 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 85e4c182-d7e1-4113-bac2-d567d0cd76ab
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:54:15.838+05:00  INFO 15460 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:54:18.131+05:00  WARN 15460 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-05-13T22:54:18.192+05:00  WARN 15460 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-05-13T22:54:18.198+05:00  INFO 15460 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:54:18.206+05:00  INFO 15460 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T22:54:18.213+05:00  INFO 15460 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T22:54:18.324+05:00  INFO 15460 --- [server] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-13T22:54:18.445+05:00 ERROR 15460 --- [server] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-05-13T22:54:47.428+05:00  INFO 9052 --- [server] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13T22:54:47.430+05:00  INFO 9052 --- [server] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-13T22:54:47.432+05:00  INFO 9052 --- [server] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-05-13T22:56:51.014+05:00  INFO 20784 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20784 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:56:51.021+05:00  INFO 20784 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:56:51.243+05:00  INFO 20784 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T22:56:51.244+05:00  INFO 20784 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T22:56:53.339+05:00  INFO 20784 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:56:53.600+05:00  INFO 20784 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 233 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:56:56.071+05:00  INFO 20784 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:56:56.135+05:00  INFO 20784 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:56:56.142+05:00  INFO 20784 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:56:56.444+05:00  INFO 20784 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:56:56.445+05:00  INFO 20784 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5199 ms
+2025-05-13T22:56:57.025+05:00  INFO 20784 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:56:57.174+05:00  INFO 20784 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T22:56:57.300+05:00  INFO 20784 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:56:58.685+05:00  INFO 20784 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:56:58.861+05:00  INFO 20784 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T22:56:59.654+05:00  INFO 20784 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7c87e0b8
+2025-05-13T22:56:59.660+05:00  INFO 20784 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T22:56:59.872+05:00  INFO 20784 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:57:02.832+05:00  INFO 20784 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:57:03.813+05:00  INFO 20784 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:57:04.560+05:00  INFO 20784 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T22:57:06.496+05:00  WARN 20784 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: bbd832fd-6d17-45f1-b9c6-f2dbafdcde96
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:57:06.521+05:00  INFO 20784 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:57:07.661+05:00  WARN 20784 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-05-13T22:57:07.715+05:00  WARN 20784 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-05-13T22:57:07.721+05:00  INFO 20784 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:57:07.727+05:00  INFO 20784 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T22:57:07.734+05:00  INFO 20784 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T22:57:07.767+05:00  INFO 20784 --- [server] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-13T22:57:07.804+05:00 ERROR 20784 --- [server] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-05-13T22:58:03.800+05:00  INFO 9052 --- [server] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-05-13T22:58:03.805+05:00  INFO 9052 --- [server] [Thread-18] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T22:58:03.830+05:00  INFO 9052 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T22:58:03.836+05:00  INFO 9052 --- [server] [Thread-18] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:58:03.838+05:00  INFO 9052 --- [server] [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-05-13T22:58:03.848+05:00  INFO 9052 --- [server] [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2025-05-13T22:58:04.077+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 9052 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:58:04.078+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:58:05.129+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:58:05.194+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 62 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:58:05.597+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:58:05.602+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:58:05.603+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:58:05.658+05:00  INFO 9052 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:58:05.658+05:00  INFO 9052 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1573 ms
+2025-05-13T22:58:05.821+05:00  INFO 9052 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:58:05.828+05:00  INFO 9052 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:58:05.871+05:00  INFO 9052 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:58:05.876+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-05-13T22:58:06.093+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection org.postgresql.jdbc.PgConnection@618c23d8
+2025-05-13T22:58:06.094+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2025-05-13T22:58:06.116+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-7)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:58:06.688+05:00  INFO 9052 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:58:08.161+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:58:08.886+05:00  WARN 9052 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e0266c89-661d-4547-96da-2324ab52f9cf
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:58:08.890+05:00  INFO 9052 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:58:09.537+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T22:58:09.583+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T22:58:09.595+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 5.622 seconds (process running for 5484.603)
+2025-05-13T22:58:09.600+05:00  INFO 9052 --- [server] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-13T22:58:15.187+05:00  INFO 9052 --- [server] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-05-13T22:58:15.189+05:00  INFO 9052 --- [server] [Thread-25] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T22:58:15.202+05:00  INFO 9052 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T22:58:15.205+05:00  INFO 9052 --- [server] [Thread-25] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:58:15.206+05:00  INFO 9052 --- [server] [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2025-05-13T22:58:15.210+05:00  INFO 9052 --- [server] [Thread-25] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2025-05-13T22:58:15.359+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 9052 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:58:15.360+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:58:15.881+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:58:16.004+05:00  INFO 9052 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:58:16.562+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:58:16.563+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:58:16.564+05:00  INFO 9052 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:58:16.623+05:00  INFO 9052 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:58:16.624+05:00  INFO 9052 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1261 ms
+2025-05-13T22:58:16.806+05:00  INFO 9052 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:58:16.815+05:00  INFO 9052 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:58:16.844+05:00  INFO 9052 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:58:16.846+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-05-13T22:58:17.074+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection org.postgresql.jdbc.PgConnection@42b5b006
+2025-05-13T22:58:17.074+05:00  INFO 9052 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2025-05-13T22:58:17.099+05:00  INFO 9052 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-8)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:58:17.643+05:00  INFO 9052 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:58:19.002+05:00  INFO 9052 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:58:19.281+05:00  INFO 15296 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 15296 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:58:19.287+05:00  INFO 15296 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:58:19.483+05:00  INFO 15296 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T22:58:19.484+05:00  INFO 15296 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T22:58:19.553+05:00  WARN 9052 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: ca104753-5005-4f3c-a2b8-6021811c2b3c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:58:19.556+05:00  INFO 9052 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:58:19.940+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T22:58:19.986+05:00  INFO 9052 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T22:58:19.995+05:00  INFO 9052 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 4.679 seconds (process running for 5495.004)
+2025-05-13T22:58:19.998+05:00  INFO 9052 --- [server] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-13T22:58:21.121+05:00  INFO 15296 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:58:21.358+05:00  INFO 15296 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 216 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:58:23.566+05:00  INFO 15296 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:58:23.597+05:00  INFO 15296 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:58:23.598+05:00  INFO 15296 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:58:23.700+05:00  INFO 15296 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:58:23.701+05:00  INFO 15296 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4215 ms
+2025-05-13T22:58:24.096+05:00  INFO 15296 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:58:24.196+05:00  INFO 15296 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T22:58:24.274+05:00  INFO 15296 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:58:24.920+05:00  INFO 15296 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:58:24.976+05:00  INFO 15296 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T22:58:25.621+05:00  INFO 15296 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@43710950
+2025-05-13T22:58:25.627+05:00  INFO 15296 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T22:58:25.824+05:00  INFO 15296 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:58:29.033+05:00  INFO 15296 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:58:30.593+05:00  INFO 15296 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:58:32.480+05:00  INFO 15296 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T22:58:35.978+05:00  WARN 15296 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 2120418f-9343-4eb3-b2b8-d2ce494e9374
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:58:35.997+05:00  INFO 15296 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:58:38.120+05:00  WARN 15296 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2025-05-13T22:58:38.254+05:00  WARN 15296 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-05-13T22:58:38.277+05:00  INFO 15296 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:58:38.287+05:00  INFO 15296 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T22:58:38.311+05:00  INFO 15296 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T22:58:38.357+05:00  INFO 15296 --- [server] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-13T22:58:38.447+05:00 ERROR 15296 --- [server] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-05-13T22:59:00.345+05:00  INFO 9052 --- [server] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T22:59:00.369+05:00  INFO 9052 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T22:59:00.377+05:00  INFO 9052 --- [server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:59:00.379+05:00  INFO 9052 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2025-05-13T22:59:00.387+05:00  INFO 9052 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2025-05-13T22:59:07.475+05:00  INFO 20904 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20904 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T22:59:07.479+05:00  INFO 20904 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T22:59:07.614+05:00  INFO 20904 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T22:59:07.615+05:00  INFO 20904 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T22:59:09.447+05:00  INFO 20904 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T22:59:09.713+05:00  INFO 20904 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 233 ms. Found 7 JPA repository interfaces.
+2025-05-13T22:59:11.303+05:00  INFO 20904 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T22:59:11.331+05:00  INFO 20904 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T22:59:11.332+05:00  INFO 20904 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T22:59:11.432+05:00  INFO 20904 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T22:59:11.433+05:00  INFO 20904 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3817 ms
+2025-05-13T22:59:11.769+05:00  INFO 20904 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T22:59:11.872+05:00  INFO 20904 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T22:59:11.955+05:00  INFO 20904 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T22:59:12.586+05:00  INFO 20904 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T22:59:12.688+05:00  INFO 20904 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T22:59:13.278+05:00  INFO 20904 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4e3002
+2025-05-13T22:59:13.283+05:00  INFO 20904 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T22:59:13.438+05:00  INFO 20904 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T22:59:16.294+05:00  INFO 20904 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T22:59:17.343+05:00  INFO 20904 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T22:59:18.134+05:00  INFO 20904 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T22:59:20.170+05:00  WARN 20904 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 9a15910d-c2d4-42bd-84b6-8144866fe98a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T22:59:20.185+05:00  INFO 20904 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T22:59:21.149+05:00  INFO 20904 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T22:59:21.224+05:00  INFO 20904 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T22:59:21.255+05:00  INFO 20904 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 14.712 seconds (process running for 16.414)
+2025-05-13T23:00:42.327+05:00  INFO 20904 --- [server] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13T23:00:42.331+05:00  INFO 20904 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-13T23:00:42.337+05:00  INFO 20904 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2025-05-13T23:05:53.739+05:00  INFO 20904 --- [server] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T23:05:53.767+05:00  INFO 20904 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T23:05:53.825+05:00  INFO 20904 --- [server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:05:53.838+05:00  INFO 20904 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T23:05:53.868+05:00  INFO 20904 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T23:06:05.984+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20664 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T23:06:05.990+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T23:06:06.141+05:00  INFO 20664 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T23:06:06.142+05:00  INFO 20664 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T23:06:08.092+05:00  INFO 20664 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T23:06:08.316+05:00  INFO 20664 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 203 ms. Found 7 JPA repository interfaces.
+2025-05-13T23:06:10.092+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T23:06:10.137+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T23:06:10.138+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T23:06:10.315+05:00  INFO 20664 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T23:06:10.317+05:00  INFO 20664 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4174 ms
+2025-05-13T23:06:11.085+05:00  INFO 20664 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T23:06:11.208+05:00  INFO 20664 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T23:06:11.289+05:00  INFO 20664 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T23:06:12.122+05:00  INFO 20664 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T23:06:12.177+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T23:06:12.551+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4e3002
+2025-05-13T23:06:12.555+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T23:06:12.704+05:00  INFO 20664 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T23:06:16.542+05:00  INFO 20664 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T23:06:17.645+05:00  INFO 20664 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:06:18.559+05:00  INFO 20664 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T23:06:21.824+05:00  WARN 20664 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8b9d20f4-67d5-4c25-b75c-65a4cb4bac1b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T23:06:21.840+05:00  INFO 20664 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T23:06:23.079+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T23:06:23.175+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T23:06:23.191+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 18.197 seconds (process running for 20.038)
+2025-05-13T23:07:32.807+05:00  INFO 20664 --- [server] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13T23:07:32.809+05:00  INFO 20664 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-13T23:07:32.815+05:00  INFO 20664 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2025-05-13T23:17:27.451+05:00  INFO 20664 --- [server] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-05-13T23:17:27.461+05:00  INFO 20664 --- [server] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T23:17:27.477+05:00  INFO 20664 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T23:17:27.491+05:00  INFO 20664 --- [server] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:17:27.500+05:00  INFO 20664 --- [server] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T23:17:27.511+05:00  INFO 20664 --- [server] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T23:17:27.869+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20664 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T23:17:27.870+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T23:17:28.792+05:00  INFO 20664 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T23:17:28.872+05:00  INFO 20664 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 7 JPA repository interfaces.
+2025-05-13T23:17:29.335+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T23:17:29.342+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T23:17:29.343+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T23:17:29.416+05:00  INFO 20664 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T23:17:29.417+05:00  INFO 20664 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1540 ms
+2025-05-13T23:17:29.593+05:00  INFO 20664 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T23:17:29.602+05:00  INFO 20664 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T23:17:29.636+05:00  INFO 20664 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T23:17:29.639+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-05-13T23:17:29.899+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection org.postgresql.jdbc.PgConnection@39053b00
+2025-05-13T23:17:29.900+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-05-13T23:17:29.926+05:00  INFO 20664 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T23:17:30.685+05:00  INFO 20664 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T23:17:32.483+05:00  INFO 20664 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:17:33.555+05:00  WARN 20664 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e5dc63b0-08c7-4025-96e0-0246da1ceea8
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T23:17:33.555+05:00  INFO 20664 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T23:17:34.245+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T23:17:34.291+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T23:17:34.302+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 6.566 seconds (process running for 695.908)
+2025-05-13T23:17:34.309+05:00  INFO 20664 --- [server] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-13T23:17:35.686+05:00  INFO 20664 --- [server] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-05-13T23:17:35.686+05:00  INFO 20664 --- [server] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T23:17:35.717+05:00  INFO 20664 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T23:17:35.728+05:00  INFO 20664 --- [server] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:17:35.734+05:00  INFO 20664 --- [server] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-05-13T23:17:35.770+05:00  INFO 20664 --- [server] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-05-13T23:17:36.020+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20664 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T23:17:36.020+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T23:17:36.745+05:00  INFO 20664 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T23:17:36.813+05:00  INFO 20664 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 7 JPA repository interfaces.
+2025-05-13T23:17:37.168+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T23:17:37.170+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T23:17:37.172+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T23:17:37.217+05:00  INFO 20664 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T23:17:37.217+05:00  INFO 20664 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1193 ms
+2025-05-13T23:17:37.345+05:00  INFO 20664 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T23:17:37.350+05:00  INFO 20664 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T23:17:37.377+05:00  INFO 20664 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T23:17:37.378+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-05-13T23:17:37.601+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection org.postgresql.jdbc.PgConnection@3221ad1
+2025-05-13T23:17:37.601+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-05-13T23:17:37.627+05:00  INFO 20664 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T23:17:38.264+05:00  INFO 20664 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T23:17:39.488+05:00  INFO 20664 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:17:39.795+05:00  WARN 20664 --- [server] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'viberController' defined in file [D:\VibeVerse\server\target\classes\com\vibeverse\server\controller\ViberController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'viberService' defined in file [D:\VibeVerse\server\target\classes\com\vibeverse\server\service\ViberService.class]: Unsatisfied dependency expressed through constructor parameter 2: No qualifying bean of type 'org.springframework.security.crypto.password.PasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-05-13T23:17:39.795+05:00  INFO 20664 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:17:39.797+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-05-13T23:17:39.871+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-05-13T23:17:39.873+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-05-13T23:17:39.884+05:00  INFO 20664 --- [server] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-05-13T23:17:39.948+05:00 ERROR 20664 --- [server] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 2 of constructor in com.vibeverse.server.service.ViberService required a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.crypto.password.PasswordEncoder' in your configuration.
+
+2025-05-13T23:17:41.722+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 20664 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T23:17:41.723+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T23:17:42.432+05:00  INFO 20664 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T23:17:42.512+05:00  INFO 20664 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 7 JPA repository interfaces.
+2025-05-13T23:17:42.847+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T23:17:42.851+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T23:17:42.851+05:00  INFO 20664 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T23:17:42.894+05:00  INFO 20664 --- [server] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-13T23:17:42.894+05:00  INFO 20664 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1169 ms
+2025-05-13T23:17:42.994+05:00  INFO 20664 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T23:17:43.000+05:00  INFO 20664 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T23:17:43.022+05:00  INFO 20664 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T23:17:43.029+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-05-13T23:17:43.204+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection org.postgresql.jdbc.PgConnection@6ea11991
+2025-05-13T23:17:43.204+05:00  INFO 20664 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-05-13T23:17:43.229+05:00  INFO 20664 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-4)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T23:17:43.748+05:00  INFO 20664 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T23:17:44.840+05:00  INFO 20664 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:17:45.529+05:00  WARN 20664 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 01d7684e-9946-4f08-bb3c-6a961c698080
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T23:17:45.529+05:00  INFO 20664 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T23:17:46.078+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T23:17:46.123+05:00  INFO 20664 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T23:17:46.136+05:00  INFO 20664 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 4.484 seconds (process running for 707.745)
+2025-05-13T23:17:46.144+05:00  INFO 20664 --- [server] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-13T23:18:10.562+05:00  INFO 20664 --- [server] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13T23:18:10.565+05:00  INFO 20664 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-13T23:18:10.569+05:00  INFO 20664 --- [server] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2025-05-13T23:23:34.666+05:00  INFO 20664 --- [server] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T23:23:34.686+05:00  INFO 20664 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T23:23:34.697+05:00  INFO 20664 --- [server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:23:34.700+05:00  INFO 20664 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-05-13T23:23:34.709+05:00  INFO 20664 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-05-13T23:23:51.647+05:00  INFO 2060 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 2060 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T23:23:51.651+05:00  INFO 2060 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T23:23:51.798+05:00  INFO 2060 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T23:23:51.800+05:00  INFO 2060 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T23:23:54.058+05:00  INFO 2060 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T23:23:54.473+05:00  INFO 2060 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 382 ms. Found 7 JPA repository interfaces.
+2025-05-13T23:23:57.325+05:00  INFO 2060 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T23:23:57.372+05:00  INFO 2060 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T23:23:57.376+05:00  INFO 2060 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T23:23:57.594+05:00  INFO 2060 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T23:23:57.595+05:00  INFO 2060 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5793 ms
+2025-05-13T23:23:58.055+05:00  INFO 2060 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T23:23:58.292+05:00  INFO 2060 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T23:23:58.408+05:00  INFO 2060 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T23:23:59.227+05:00  INFO 2060 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T23:23:59.325+05:00  INFO 2060 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T23:24:00.059+05:00  INFO 2060 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@314463e7
+2025-05-13T23:24:00.059+05:00  INFO 2060 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T23:24:00.363+05:00  INFO 2060 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T23:24:05.689+05:00  INFO 2060 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T23:24:06.853+05:00  INFO 2060 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:24:07.898+05:00  INFO 2060 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T23:24:10.989+05:00  WARN 2060 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: df1f1b42-0a4e-4546-affe-a58e409733f4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T23:24:11.019+05:00  INFO 2060 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T23:24:13.287+05:00  INFO 2060 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T23:24:13.557+05:00  INFO 2060 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T23:24:13.584+05:00  INFO 2060 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 23.449 seconds (process running for 26.242)
+2025-05-13T23:24:39.246+05:00  INFO 2060 --- [server] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-13T23:24:39.246+05:00  INFO 2060 --- [server] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-13T23:24:39.252+05:00  INFO 2060 --- [server] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2025-05-13T23:27:05.625+05:00  INFO 2060 --- [server] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13T23:27:05.639+05:00  INFO 2060 --- [server] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-13T23:27:05.650+05:00  INFO 2060 --- [server] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:27:05.657+05:00  INFO 2060 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-13T23:27:05.668+05:00  INFO 2060 --- [server] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-13T23:27:18.417+05:00  INFO 11660 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Starting ServerApplication using Java 23.0.2 with PID 11660 (D:\VibeVerse\server\target\classes started by H P in D:\VibeVerse)
+2025-05-13T23:27:18.420+05:00  INFO 11660 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-13T23:27:18.588+05:00  INFO 11660 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-13T23:27:18.588+05:00  INFO 11660 --- [server] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-13T23:27:21.382+05:00  INFO 11660 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-13T23:27:21.675+05:00  INFO 11660 --- [server] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 265 ms. Found 7 JPA repository interfaces.
+2025-05-13T23:27:23.431+05:00  INFO 11660 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-05-13T23:27:23.464+05:00  INFO 11660 --- [server] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-13T23:27:23.464+05:00  INFO 11660 --- [server] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-13T23:27:23.588+05:00  INFO 11660 --- [server] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-13T23:27:23.588+05:00  INFO 11660 --- [server] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5000 ms
+2025-05-13T23:27:24.251+05:00  INFO 11660 --- [server] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-13T23:27:24.704+05:00  INFO 11660 --- [server] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-13T23:27:25.149+05:00  INFO 11660 --- [server] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-13T23:27:26.005+05:00  INFO 11660 --- [server] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-13T23:27:26.091+05:00  INFO 11660 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-13T23:27:26.604+05:00  INFO 11660 --- [server] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1acc1987
+2025-05-13T23:27:26.609+05:00  INFO 11660 --- [server] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-13T23:27:26.793+05:00  INFO 11660 --- [server] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.4
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-13T23:27:29.747+05:00  INFO 11660 --- [server] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-13T23:27:31.333+05:00  INFO 11660 --- [server] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13T23:27:32.575+05:00  INFO 11660 --- [server] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-13T23:27:35.223+05:00  WARN 11660 --- [server] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 6cfd1e89-b8f7-4003-8b52-54b589b09a8e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-05-13T23:27:35.263+05:00  INFO 11660 --- [server] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-05-13T23:27:37.181+05:00  INFO 11660 --- [server] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-13T23:27:37.311+05:00  INFO 11660 --- [server] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-05-13T23:27:37.339+05:00  INFO 11660 --- [server] [restartedMain] com.vibeverse.server.ServerApplication   : Started ServerApplication in 20.18 seconds (process running for 22.266)

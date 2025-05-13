@@ -47,7 +47,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of("http://localhost:56128/"));  // Flutter web URL
+        config.setAllowedOrigins(List.of("http://localhost:59317/"));  // Flutter web URL
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);

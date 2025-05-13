@@ -17,12 +17,12 @@ class _BooksPageState extends State<BooksPage> {
       'https://m.media-amazon.com/images/I/81YPgi4vpDL._AC_UF1000,1000_QL80_.jpg', // The Alchemist by Paulo Coelho
       'https://m.media-amazon.com/images/I/71aFt4+OTOL._AC_UF1000,1000_QL80_.jpg', // The Midnight Library by Matt Haig
       'https://m.media-amazon.com/images/I/81wgcld4wxL._AC_UF894,1000_QL80_.jpg', // Atomic Habits by James Clear
-      'https://m.media-amazon.com/images/I/71KI-FxH47L._AC_UF1000,1000_QL80_.jpg', // To Kill a Mockingbird by Harper Lee
+
       'https://m.media-amazon.com/images/I/81QckmGleYL._AC_UF1000,1000_QL80_.jpg', // The Great Gatsby by F. Scott Fitzgerald
       'https://m.media-amazon.com/images/I/71OZY035QKL._AC_UF1000,1000_QL80_.jpg', // Sapiens by Yuval Noah Harari
       'https://m.media-amazon.com/images/I/81BE7eeKzAL._AC_UF1000,1000_QL80_.jpg', // The Hobbit by J.R.R. Tolkien
-      'https://m.media-amazon.com/images/I/81F+lEUlYWL._AC_UF1000,1000_QL80_.jpg', // Project Hail Mary by Andy Weir
-      'https://m.media-amazon.com/images/I/91b9nNrLrCL._AC_UF1000,1000_QL80_.jpg', // The Song of Achilles by Madeline Miller
+      // 'https://m.media-amazon.com/images/I/81F+lEUlYWL._AC_UF1000,1000_QL80_.jpg', // Project Hail Mary by Andy Weir
+      // 'https://m.media-amazon.com/images/I/91b9nNrLrCL._AC_UF1000,1000_QL80_.jpg', // The Song of Achilles by Madeline Miller
       'https://m.media-amazon.com/images/I/81Xy1ugiWeL._AC_UF1000,1000_QL80_.jpg', // Educated by Tara Westover
       'https://m.media-amazon.com/images/I/81hHy5XrdKL._AC_UF1000,1000_QL80_.jpg', // The Four Winds by Kristin Hannah
       'https://m.media-amazon.com/images/I/71xMttNhr6L._AC_UF1000,1000_QL80_.jpg', // Where the Crawdads Sing by Delia Owens
@@ -54,13 +54,21 @@ class _BooksPageState extends State<BooksPage> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: List.generate(
-          books.length > 8 ? 8 : books.length,
-          (index) => Padding(
+        children: List.generate(books.length > 8 ? 8 : books.length, (index) {
+          // Check if the index is 2, then navigate to the '/book' route
+          return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: _buildImageCard(books[index]),
-          ),
-        ),
+            child: GestureDetector(
+              onTap: () {
+                if (index == 5) {
+                  // Navigate to the '/book' route when index 2 is clicked
+                  Navigator.pushNamed(context, '/book');
+                }
+              },
+              child: _buildImageCard(books[index]),
+            ),
+          );
+        }),
       ),
     );
   }

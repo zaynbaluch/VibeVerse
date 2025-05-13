@@ -4,7 +4,6 @@ import 'package:client/pages/explore/books_section.dart';
 import 'package:client/pages/explore/games_section.dart';
 import 'package:client/pages/explore/movies_section.dart';
 import 'package:client/utils/colors.dart';
-import 'package:client/utils/headings.dart';
 import 'package:client/utils/text.dart';
 import 'package:flutter/material.dart';
 

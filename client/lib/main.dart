@@ -1,3 +1,4 @@
+import 'package:client/components/media/book.dart';
 import 'package:client/pages/actual_landing.dart';
 import 'package:client/pages/create_page.dart';
 import 'package:client/pages/explore/explore_page.dart';
@@ -22,18 +23,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
-      initialRoute: '/landing',
+      initialRoute: '/actual_landing',
       routes: {
         '/home': (context) => const HomePage(),
         '/explore': (context) => const ExplorePage(),
         '/profile':
             (context) => const ProfilePage(
               username: 'libero31',
-            ), // Replace with actual logic
+            ), 
         '/create': (context) => const CreatePage(),
 
         '/landing': (context) => const LandingPage(),
         '/actual_landing': (context) => const StartingPage(),
+        '/book': (context) => const Book(),
       },
     );
   }

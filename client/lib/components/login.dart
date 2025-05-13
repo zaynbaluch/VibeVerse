@@ -4,6 +4,7 @@ import 'package:client/utils/text.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -106,7 +107,7 @@ class _LoginPageState extends State<Login> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProfilePage(username: 'libero31'),
+                        builder: (context) => VibeSplashScreen(),
                       ),
                     );
                   },
@@ -119,6 +120,28 @@ class _LoginPageState extends State<Login> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class VibeSplashScreen extends StatelessWidget {
+  const VibeSplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSplashScreen(
+      duration: 1500,
+      splash: Center(
+        child: Column(
+          children: [
+            Image.asset('images/logo.png', width: 60, fit: BoxFit.cover),
+            RText(text: "VIBEVERSE", size: 30),
+          ],
+        ),
+      ),
+      nextScreen: const ProfilePage(username: 'libero31'),
+      splashTransition: SplashTransition.scaleTransition,
+      backgroundColor: AppColor.green,
     );
   }
 }
