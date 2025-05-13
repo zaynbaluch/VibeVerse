@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/movies")
 @RequiredArgsConstructor
@@ -23,7 +25,15 @@ import org.springframework.web.bind.annotation.*;
 public class MovieController {
 
     private final MediaService mediaService;
-    
+
+    @GetMapping("/library")
+    @Operation(summary = "Get all movies in current user's library")
+    public ResponseEntity<List<ViberMovieDto>> getAllMoviesInUserLibrary() {
+        List<ViberMovieDto> movieList = mediaService.getAllViberMoviesForCurrentUser();
+        return ResponseEntity.ok(movieList);
+    }
+
+
     @PostMapping("/search")
     @Operation(summary = "Search movies")
     public ResponseEntity<MediaSearchResultDto<MovieDto>> searchMovies(@Valid @RequestBody MediaSearchDto searchDto) {

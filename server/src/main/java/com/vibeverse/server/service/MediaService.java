@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,7 +47,45 @@ public class MediaService {
     private final TmdbApiClient tmdbApiClient;
     private final GoogleBooksApiClient googleBooksApiClient;
     private final RawgApiClient rawgApiClient;
-    
+
+
+    @Transactional(readOnly = true)
+    public List<ViberAnimeDto> getAllViberAnimeForCurrentUser() {
+        Viber viber = viberService.getAuthenticatedViber();
+        return viberAnimeRepository.findByViberId(viber.getId())
+                .stream()
+                .map(viberAnimeMapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ViberMovieDto> getAllViberMoviesForCurrentUser() {
+        Viber viber = viberService.getAuthenticatedViber();
+        return viberMovieRepository.findByViberId(viber.getId())
+                .stream()
+                .map(viberMovieMapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ViberBookDto> getAllViberBooksForCurrentUser() {
+        Viber viber = viberService.getAuthenticatedViber();
+        return viberBookRepository.findByViberId(viber.getId())
+                .stream()
+                .map(viberBookMapper::toDto)
+                .toList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<ViberGameDto> getAllViberGamesForCurrentUser() {
+        Viber viber = viberService.getAuthenticatedViber();
+        return viberGameRepository.findByViberId(viber.getId())
+                .stream()
+                .map(viberGameMapper::toDto)
+                .toList();
+    }
+
+
     // Search methods
     @Transactional(readOnly = true)
     public MediaSearchResultDto<AnimeDto> searchAnime(MediaSearchDto searchDto) {
@@ -314,7 +353,9 @@ public class MediaService {
         
         return viberMovieMapper.toDto(viberMovie);
     }
-    
+
+
+
     @Transactional
     public ViberBookDto updateBookInLibrary(Long id, ViberBookUpdateDto updateDto) {
         Viber viber = viberService.getAuthenticatedViber();

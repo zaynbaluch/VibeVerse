@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/books")
 @RequiredArgsConstructor
@@ -23,7 +25,15 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
 
     private final MediaService mediaService;
-    
+
+    @GetMapping("/library")
+    @Operation(summary = "Get all books in current user's library")
+    public ResponseEntity<List<ViberBookDto>> getAllBooksInUserLibrary() {
+        List<ViberBookDto> bookList = mediaService.getAllViberBooksForCurrentUser();
+        return ResponseEntity.ok(bookList);
+    }
+
+
     @PostMapping("/search")
     @Operation(summary = "Search books")
     public ResponseEntity<MediaSearchResultDto<BookDto>> searchBooks(@Valid @RequestBody MediaSearchDto searchDto) {

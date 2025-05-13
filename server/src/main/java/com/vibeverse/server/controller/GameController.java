@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/games")
 @RequiredArgsConstructor
@@ -23,7 +25,15 @@ import org.springframework.web.bind.annotation.*;
 public class GameController {
 
     private final MediaService mediaService;
-    
+
+    @GetMapping("/library")
+    @Operation(summary = "Get all games in current user's library")
+    public ResponseEntity<List<ViberGameDto>> getAllGamesInUserLibrary() {
+        List<ViberGameDto> gameList = mediaService.getAllViberGamesForCurrentUser();
+        return ResponseEntity.ok(gameList);
+    }
+
+
     @PostMapping("/search")
     @Operation(summary = "Search games")
     public ResponseEntity<MediaSearchResultDto<GameDto>> searchGames(@Valid @RequestBody MediaSearchDto searchDto) {

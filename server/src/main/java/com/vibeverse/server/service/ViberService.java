@@ -25,6 +25,9 @@ public class ViberService {
     private final ViberRepository viberRepository;
     private final ViberMapper viberMapper;
     private final PasswordEncoder passwordEncoder;
+
+
+
     
     @Transactional(readOnly = true)
     public ViberDto getCurrentViber() {
