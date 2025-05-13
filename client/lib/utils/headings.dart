@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class HeaderText extends StatelessWidget {
@@ -17,7 +18,7 @@ class HeaderText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
+      style: GoogleFonts.bebasNeue(
         color: color,
         fontSize: size,
         fontWeight: FontWeight.bold,

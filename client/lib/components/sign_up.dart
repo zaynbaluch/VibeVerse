@@ -1,3 +1,5 @@
+import 'package:client/utils/colors.dart';
+import 'package:client/utils/text.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -27,7 +29,7 @@ class _SignUpPageState extends State<SignUp> {
     if (_formKey.currentState!.validate()) {
       if (passwordController.text != confirmPasswordController.text) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Passwords do not match'),
             backgroundColor: Colors.red,
           ),
@@ -56,101 +58,122 @@ class _SignUpPageState extends State<SignUp> {
 
       if (response.statusCode == 201) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Signup successful!'),
-            backgroundColor: Colors.green,
+           SnackBar(
+            content: RText(text:'Signup successful!'),
+            backgroundColor: AppColor.green,
           ),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Signup failed!'),
-            backgroundColor: Colors.red,
+           SnackBar(
+            content: RText(text:"Signup failed!"),
+            backgroundColor: AppColor.red,
           ),
         );
       }
     }
   }
 
+  InputDecoration _inputDecoration(String label) {
+    return InputDecoration(
+      labelText: label,
+      labelStyle: const TextStyle(color: Colors.grey),
+      enabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColor.green),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 500,
-      padding: EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
-      ),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextFormField(
-              controller: usernameController,
-              decoration: InputDecoration(labelText: 'VibeTag'),
-              validator:
-                  (value) =>
-                      value == null || value.isEmpty ? 'Enter VibeTag' : null,
-            ),
-            TextFormField(
-              controller: firstnameController,
-              decoration: InputDecoration(labelText: 'Firstname'),
-              validator:
-                  (value) =>
-                      value == null || value.isEmpty
-                          ? 'Enter First Name'
-                          : null,
-            ),
-            TextFormField(
-              controller: lastnameController,
-              decoration: InputDecoration(labelText: 'Lastname'),
-              validator:
-                  (value) =>
-                      value == null || value.isEmpty ? 'Enter Last Name' : null,
-            ),
-            TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-              validator:
-                  (value) =>
-                      value == null || !value.contains('@')
-                          ? 'Enter valid email'
-                          : null,
-            ),
-            TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: InputDecoration(labelText: 'Password'),
-              validator:
-                  (value) =>
-                      value == null || value.length < 6
-                          ? 'Minimum 6 characters'
-                          : null,
-            ),
-            TextFormField(
-              controller: confirmPasswordController,
-              obscureText: true,
-              decoration: InputDecoration(labelText: 'Confirm Password'),
-            ),
-            TextFormField(
-              controller: dobController,
-              decoration: InputDecoration(
-                labelText: 'Date of Birth (YYYY-MM-DD)',
-              ),
-              validator:
-                  (value) =>
-                      value == null || value.isEmpty ? 'Enter DOB' : null,
-            ),
-            SizedBox(height: 20),
-            isLoading
-                ? CircularProgressIndicator()
-                : ElevatedButton(
-                  onPressed: submitForm,
-                  child: Text('Start Vibing'),
+    return Flexible(
+      child: SingleChildScrollView(
+        child: SizedBox(
+          width: 500,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  controller: usernameController,
+                  style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                  decoration: _inputDecoration('VibeTag'),
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty ? 'Enter VibeTag' : null,
                 ),
-          ],
+                TextFormField(
+                  controller: firstnameController,
+                  style: const TextStyle(color:  Color.fromARGB(255, 255, 255, 255)),
+                  decoration: _inputDecoration('Firstname'),
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? 'Enter First Name'
+                              : null,
+                ),
+                TextFormField(
+                  controller: lastnameController,
+                  style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                  decoration: _inputDecoration('Lastname'),
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty ? 'Enter Last Name' : null,
+                ),
+                TextFormField(
+                  controller: emailController,
+                  style: const TextStyle(color:  Color.fromARGB(255, 255, 255, 255)),
+                  decoration: _inputDecoration('Email'),
+                  validator:
+                      (value) =>
+                          value == null || !value.contains('@')
+                              ? 'Enter valid email'
+                              : null,
+                ),
+                TextFormField(
+                  controller: passwordController,
+                  obscureText: true,
+                  style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                  decoration: _inputDecoration('Password'),
+                  validator:
+                      (value) =>
+                          value == null || value.length < 6
+                              ? 'Minimum 6 characters'
+                              : null,
+                ),
+                TextFormField(
+                  controller: confirmPasswordController,
+                  obscureText: true,
+                  style: const TextStyle(color:  Color.fromARGB(255, 255, 255, 255)),
+                  decoration: _inputDecoration('Confirm Password'),
+                ),
+                TextFormField(
+                  controller: dobController,
+                  style: const TextStyle(color:  Color.fromARGB(255, 255, 255, 255)),
+                  decoration: _inputDecoration('Date of Birth (YYYY-MM-DD)'),
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty ? 'Enter DOB' : null,
+                ),
+                const SizedBox(height: 10),
+                isLoading
+                    ? const CircularProgressIndicator()
+                    : ElevatedButton(
+                      onPressed: submitForm,
+        
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColor.green,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: RText(text: 'BECOME A VIBER'),
+                    ),
+              ],
+            ),
+          ),
         ),
       ),
     );

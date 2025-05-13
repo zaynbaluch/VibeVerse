@@ -1,3 +1,6 @@
+import 'package:client/pages/profile_page.dart';
+import 'package:client/utils/colors.dart';
+import 'package:client/utils/text.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -38,31 +41,40 @@ class _LoginPageState extends State<Login> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Login successful!'),
-            backgroundColor: Colors.green,
+            backgroundColor: AppColor.green,
           ),
         );
         // TODO: Navigate to the home page or save token
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Invalid email or password'),
-            backgroundColor: Colors.red,
+            content: Text('Invalid ViberTag or password'),
+            backgroundColor: AppColor.red,
           ),
         );
       }
     }
   }
 
+  InputDecoration _inputDecoration(String label) {
+    return InputDecoration(
+      labelText: label,
+      labelStyle: const TextStyle(color: Colors.grey),
+      enabledBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: Colors.grey),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: AppColor.green),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.transparent,
       width: 400,
-      padding: EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
-      ),
+      padding: const EdgeInsets.all(24),
       child: Form(
         key: _formKey,
         child: Column(
@@ -70,24 +82,40 @@ class _LoginPageState extends State<Login> {
           children: [
             TextFormField(
               controller: emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-              validator: (value) =>
-                  value == null || !value.contains('@') ? 'Enter valid email' : null,
+              style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+              decoration: _inputDecoration('ViberTag'),
+              validator:
+                  (value) => value == null ? 'Enter valid username' : null,
             ),
             TextFormField(
               controller: passwordController,
               obscureText: true,
-              decoration: InputDecoration(labelText: 'Password'),
-              validator: (value) =>
-                  value == null || value.length < 6 ? 'Minimum 6 characters' : null,
+              style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+              decoration: _inputDecoration('Password'),
+              validator:
+                  (value) =>
+                      value == null || value.length < 6
+                          ? 'Minimum 6 characters'
+                          : null,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             isLoading
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : ElevatedButton(
-                    onPressed: login,
-                    child: Text('Login'),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfilePage(username: 'libero31'),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColor.green,
+                    foregroundColor: Colors.white,
                   ),
+                  child: RText(text: 'Enter VibeVerse'),
+                ),
           ],
         ),
       ),

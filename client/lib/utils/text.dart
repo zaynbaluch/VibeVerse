@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class RText extends StatelessWidget {
@@ -10,7 +11,7 @@ class RText extends StatelessWidget {
   RText({
     super.key,
     required this.text,
-    this.size = 12,
+    this.size = 20,
     this.color = const Color(0XFF000000),
     this.height = 1.8,
   });
@@ -19,13 +20,13 @@ class RText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(
+      style: GoogleFonts.bebasNeue(
         color: color,
         fontSize: size,
         fontWeight: FontWeight.normal,
         height: height,
 
-        //fontFamily:'choosen font',
+       
       ),
     );
   }
