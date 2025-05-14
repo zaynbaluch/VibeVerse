@@ -51,6 +51,7 @@ public class AnimeController {
     public ResponseEntity<ViberAnimeDto> addAnimeToLibrary(
             @PathVariable String externalId,
             @Valid @RequestBody ViberAnimeUpdateDto updateDto) {
+        System.out.println("Received add anime:" + updateDto);
         return new ResponseEntity<>(mediaService.addAnimeToLibrary(externalId, updateDto), HttpStatus.CREATED);
     }
     

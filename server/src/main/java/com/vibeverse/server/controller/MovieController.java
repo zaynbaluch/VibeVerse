@@ -33,7 +33,6 @@ public class MovieController {
         return ResponseEntity.ok(movieList);
     }
 
-
     @PostMapping("/search")
     @Operation(summary = "Search movies")
     public ResponseEntity<MediaSearchResultDto<MovieDto>> searchMovies(@Valid @RequestBody MediaSearchDto searchDto) {
